@@ -9,9 +9,13 @@ __pycache__/
 # Jupyter
 .ipynb_checkpoints/
 
-# Virtual environment
+# Python virtual environments
 .venv/
 venv/
+# Python cache files
+__pycache__/
+*.py[cod]
+
 
 # macOS
 .DS_Store
