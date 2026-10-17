@@ -1,0 +1,704 @@
+{
+  "generated_at": "2026-10-17T09:13:49",
+  "summary": {
+    "ERROR": 3,
+    "WARNING": 8,
+    "INFO": 32,
+    "PASS": 56
+  },
+  "checks": [
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "-",
+      "check": "snapshot_exists",
+      "message": "Thư mục snapshot tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "listings.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "listings.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['id', 'latitude', 'longitude']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-09-12",
+      "file": "listings.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 17,730"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "listings.csv",
+      "check": "duplicate_ids",
+      "message": "Không phát hiện ID trùng trong cột id."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "listings.csv",
+      "check": "invalid_coordinates",
+      "message": "Không phát hiện tọa độ ngoài phạm vi."
+    },
+    {
+      "level": "WARNING",
+      "snapshot": "2025-09-12",
+      "file": "listings.csv",
+      "check": "price_all_missing",
+      "message": "Toàn bộ cột price bị thiếu; không thể tính KPI giá từ cột này."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-09-12",
+      "file": "listings.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "calendar.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "calendar.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['listing_id', 'date', 'available']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-09-12",
+      "file": "calendar.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 6,471,450"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "calendar.csv",
+      "check": "invalid_dates",
+      "message": "Không phát hiện giá trị ngày không hợp lệ."
+    },
+    {
+      "level": "WARNING",
+      "snapshot": "2025-09-12",
+      "file": "calendar.csv",
+      "check": "price_all_missing",
+      "message": "Toàn bộ cột price bị thiếu; không thể tính KPI giá từ cột này."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-09-12",
+      "file": "calendar.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "reviews.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "reviews.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['listing_id', 'id', 'date', 'comments']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-09-12",
+      "file": "reviews.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 693,896"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "reviews.csv",
+      "check": "duplicate_ids",
+      "message": "Không phát hiện ID trùng trong cột id."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "reviews.csv",
+      "check": "invalid_dates",
+      "message": "Không phát hiện giá trị ngày không hợp lệ."
+    },
+    {
+      "level": "WARNING",
+      "snapshot": "2025-09-12",
+      "file": "reviews.csv",
+      "check": "missing_comments",
+      "message": "Có 102/693,896 review không có comments (0.01%)."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-09-12",
+      "file": "reviews.csv",
+      "check": "short_comments",
+      "message": "Có 5,151 comments ngắn hơn 5 ký tự."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-09-12",
+      "file": "reviews.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "ERROR",
+      "snapshot": "2025-09-12",
+      "file": "neighbourhoods.csv",
+      "check": "file_exists",
+      "message": "Thiếu file dữ liệu theo cấu trúc dự kiến."
+    },
+    {
+      "level": "ERROR",
+      "snapshot": "2025-09-12",
+      "file": "neighbourhoods.geojson",
+      "check": "file_exists",
+      "message": "Thiếu file dữ liệu theo cấu trúc dự kiến."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "-",
+      "check": "snapshot_exists",
+      "message": "Thư mục snapshot tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "listings.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "listings.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['id', 'latitude', 'longitude']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "listings.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 20,436"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "listings.csv",
+      "check": "duplicate_ids",
+      "message": "Không phát hiện ID trùng trong cột id."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "listings.csv",
+      "check": "invalid_coordinates",
+      "message": "Không phát hiện tọa độ ngoài phạm vi."
+    },
+    {
+      "level": "WARNING",
+      "snapshot": "2025-12-12",
+      "file": "listings.csv",
+      "check": "price_all_missing",
+      "message": "Toàn bộ cột price bị thiếu; không thể tính KPI giá từ cột này."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "listings.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "calendar.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "calendar.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['listing_id', 'date', 'available']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "calendar.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 7,459,152"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "calendar.csv",
+      "check": "invalid_dates",
+      "message": "Không phát hiện giá trị ngày không hợp lệ."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "calendar.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "reviews.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "reviews.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['listing_id', 'id', 'date', 'comments']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "reviews.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 737,733"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "reviews.csv",
+      "check": "duplicate_ids",
+      "message": "Không phát hiện ID trùng trong cột id."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "reviews.csv",
+      "check": "invalid_dates",
+      "message": "Không phát hiện giá trị ngày không hợp lệ."
+    },
+    {
+      "level": "WARNING",
+      "snapshot": "2025-12-12",
+      "file": "reviews.csv",
+      "check": "missing_comments",
+      "message": "Có 111/737,733 review không có comments (0.02%)."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "reviews.csv",
+      "check": "short_comments",
+      "message": "Có 5,649 comments ngắn hơn 5 ký tự."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "reviews.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "neighbourhoods.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "neighbourhoods.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['neighbourhood']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "neighbourhoods.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 38"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-12-12",
+      "file": "neighbourhoods.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "neighbourhoods.geojson",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-12-12",
+      "file": "neighbourhoods.geojson",
+      "check": "geojson_structure",
+      "message": "GeoJSON hợp lệ về cấu trúc cơ bản; có 38 features."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "-",
+      "check": "snapshot_exists",
+      "message": "Thư mục snapshot tồn tại."
+    },
+    {
+      "level": "ERROR",
+      "snapshot": "2026-03-21",
+      "file": "listings.csv",
+      "check": "file_exists",
+      "message": "Thiếu file dữ liệu theo cấu trúc dự kiến."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "calendar.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "calendar.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['listing_id', 'date', 'available']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-03-21",
+      "file": "calendar.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 4,950,495"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "calendar.csv",
+      "check": "invalid_dates",
+      "message": "Không phát hiện giá trị ngày không hợp lệ."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-03-21",
+      "file": "calendar.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "reviews.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "reviews.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['listing_id', 'id', 'date', 'comments']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-03-21",
+      "file": "reviews.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 649,874"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "reviews.csv",
+      "check": "duplicate_ids",
+      "message": "Không phát hiện ID trùng trong cột id."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "reviews.csv",
+      "check": "invalid_dates",
+      "message": "Không phát hiện giá trị ngày không hợp lệ."
+    },
+    {
+      "level": "WARNING",
+      "snapshot": "2026-03-21",
+      "file": "reviews.csv",
+      "check": "missing_comments",
+      "message": "Có 95/649,874 review không có comments (0.01%)."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-03-21",
+      "file": "reviews.csv",
+      "check": "short_comments",
+      "message": "Có 5,051 comments ngắn hơn 5 ký tự."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-03-21",
+      "file": "reviews.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "neighbourhoods.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "neighbourhoods.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['neighbourhood']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-03-21",
+      "file": "neighbourhoods.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 38"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-03-21",
+      "file": "neighbourhoods.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "neighbourhoods.geojson",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-03-21",
+      "file": "neighbourhoods.geojson",
+      "check": "geojson_structure",
+      "message": "GeoJSON hợp lệ về cấu trúc cơ bản; có 38 features."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "-",
+      "check": "snapshot_exists",
+      "message": "Thư mục snapshot tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "listings.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "listings.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['id', 'latitude', 'longitude']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "listings.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 20,573"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "listings.csv",
+      "check": "duplicate_ids",
+      "message": "Không phát hiện ID trùng trong cột id."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "listings.csv",
+      "check": "invalid_coordinates",
+      "message": "Không phát hiện tọa độ ngoài phạm vi."
+    },
+    {
+      "level": "WARNING",
+      "snapshot": "2026-06-16",
+      "file": "listings.csv",
+      "check": "price_missing",
+      "message": "Cột price thiếu 2,787 giá trị."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "listings.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "calendar.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "calendar.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['listing_id', 'date', 'available']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "calendar.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 7,509,145"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "calendar.csv",
+      "check": "invalid_dates",
+      "message": "Không phát hiện giá trị ngày không hợp lệ."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "calendar.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "reviews.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "reviews.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['listing_id', 'id', 'date', 'comments']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "reviews.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 801,398"
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "reviews.csv",
+      "check": "duplicate_ids",
+      "message": "Không phát hiện ID trùng trong cột id."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "reviews.csv",
+      "check": "invalid_dates",
+      "message": "Không phát hiện giá trị ngày không hợp lệ."
+    },
+    {
+      "level": "WARNING",
+      "snapshot": "2026-06-16",
+      "file": "reviews.csv",
+      "check": "missing_comments",
+      "message": "Có 123/801,398 review không có comments (0.02%)."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "reviews.csv",
+      "check": "short_comments",
+      "message": "Có 6,286 comments ngắn hơn 5 ký tự."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "reviews.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "neighbourhoods.csv",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "neighbourhoods.csv",
+      "check": "required_columns",
+      "message": "Đã tìm thấy các cột bắt buộc: ['neighbourhood']"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "neighbourhoods.csv",
+      "check": "row_count",
+      "message": "Tổng số dòng đọc được: 38"
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2026-06-16",
+      "file": "neighbourhoods.csv",
+      "check": "duplicate_rows",
+      "message": "Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "neighbourhoods.geojson",
+      "check": "file_exists",
+      "message": "File tồn tại."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2026-06-16",
+      "file": "neighbourhoods.geojson",
+      "check": "geojson_structure",
+      "message": "GeoJSON hợp lệ về cấu trúc cơ bản; có 38 features."
+    }
+  ]
+}

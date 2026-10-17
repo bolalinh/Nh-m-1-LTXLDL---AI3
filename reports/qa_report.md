@@ -1,0 +1,112 @@
+# Data Quality Report
+
+- Generated at: 2026-10-17T09:13:49
+
+## Summary
+
+- **ERROR:** 3
+- **WARNING:** 8
+- **INFO:** 32
+- **PASS:** 56
+
+## Details
+
+- **[PASS]** `2025-09-12/-` — snapshot_exists: Thư mục snapshot tồn tại.
+- **[PASS]** `2025-09-12/listings.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-09-12/listings.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['id', 'latitude', 'longitude']
+- **[INFO]** `2025-09-12/listings.csv` — row_count: Tổng số dòng đọc được: 17,730
+- **[PASS]** `2025-09-12/listings.csv` — duplicate_ids: Không phát hiện ID trùng trong cột id.
+- **[PASS]** `2025-09-12/listings.csv` — invalid_coordinates: Không phát hiện tọa độ ngoài phạm vi.
+- **[WARNING]** `2025-09-12/listings.csv` — price_all_missing: Toàn bộ cột price bị thiếu; không thể tính KPI giá từ cột này.
+- **[INFO]** `2025-09-12/listings.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2025-09-12/calendar.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-09-12/calendar.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['listing_id', 'date', 'available']
+- **[INFO]** `2025-09-12/calendar.csv` — row_count: Tổng số dòng đọc được: 6,471,450
+- **[PASS]** `2025-09-12/calendar.csv` — invalid_dates: Không phát hiện giá trị ngày không hợp lệ.
+- **[WARNING]** `2025-09-12/calendar.csv` — price_all_missing: Toàn bộ cột price bị thiếu; không thể tính KPI giá từ cột này.
+- **[INFO]** `2025-09-12/calendar.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2025-09-12/reviews.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-09-12/reviews.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['listing_id', 'id', 'date', 'comments']
+- **[INFO]** `2025-09-12/reviews.csv` — row_count: Tổng số dòng đọc được: 693,896
+- **[PASS]** `2025-09-12/reviews.csv` — duplicate_ids: Không phát hiện ID trùng trong cột id.
+- **[PASS]** `2025-09-12/reviews.csv` — invalid_dates: Không phát hiện giá trị ngày không hợp lệ.
+- **[WARNING]** `2025-09-12/reviews.csv` — missing_comments: Có 102/693,896 review không có comments (0.01%).
+- **[INFO]** `2025-09-12/reviews.csv` — short_comments: Có 5,151 comments ngắn hơn 5 ký tự.
+- **[INFO]** `2025-09-12/reviews.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[ERROR]** `2025-09-12/neighbourhoods.csv` — file_exists: Thiếu file dữ liệu theo cấu trúc dự kiến.
+- **[ERROR]** `2025-09-12/neighbourhoods.geojson` — file_exists: Thiếu file dữ liệu theo cấu trúc dự kiến.
+- **[PASS]** `2025-12-12/-` — snapshot_exists: Thư mục snapshot tồn tại.
+- **[PASS]** `2025-12-12/listings.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/listings.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['id', 'latitude', 'longitude']
+- **[INFO]** `2025-12-12/listings.csv` — row_count: Tổng số dòng đọc được: 20,436
+- **[PASS]** `2025-12-12/listings.csv` — duplicate_ids: Không phát hiện ID trùng trong cột id.
+- **[PASS]** `2025-12-12/listings.csv` — invalid_coordinates: Không phát hiện tọa độ ngoài phạm vi.
+- **[WARNING]** `2025-12-12/listings.csv` — price_all_missing: Toàn bộ cột price bị thiếu; không thể tính KPI giá từ cột này.
+- **[INFO]** `2025-12-12/listings.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2025-12-12/calendar.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/calendar.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['listing_id', 'date', 'available']
+- **[INFO]** `2025-12-12/calendar.csv` — row_count: Tổng số dòng đọc được: 7,459,152
+- **[PASS]** `2025-12-12/calendar.csv` — invalid_dates: Không phát hiện giá trị ngày không hợp lệ.
+- **[INFO]** `2025-12-12/calendar.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2025-12-12/reviews.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/reviews.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['listing_id', 'id', 'date', 'comments']
+- **[INFO]** `2025-12-12/reviews.csv` — row_count: Tổng số dòng đọc được: 737,733
+- **[PASS]** `2025-12-12/reviews.csv` — duplicate_ids: Không phát hiện ID trùng trong cột id.
+- **[PASS]** `2025-12-12/reviews.csv` — invalid_dates: Không phát hiện giá trị ngày không hợp lệ.
+- **[WARNING]** `2025-12-12/reviews.csv` — missing_comments: Có 111/737,733 review không có comments (0.02%).
+- **[INFO]** `2025-12-12/reviews.csv` — short_comments: Có 5,649 comments ngắn hơn 5 ký tự.
+- **[INFO]** `2025-12-12/reviews.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2025-12-12/neighbourhoods.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/neighbourhoods.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['neighbourhood']
+- **[INFO]** `2025-12-12/neighbourhoods.csv` — row_count: Tổng số dòng đọc được: 38
+- **[INFO]** `2025-12-12/neighbourhoods.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2025-12-12/neighbourhoods.geojson` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/neighbourhoods.geojson` — geojson_structure: GeoJSON hợp lệ về cấu trúc cơ bản; có 38 features.
+- **[PASS]** `2026-03-21/-` — snapshot_exists: Thư mục snapshot tồn tại.
+- **[ERROR]** `2026-03-21/listings.csv` — file_exists: Thiếu file dữ liệu theo cấu trúc dự kiến.
+- **[PASS]** `2026-03-21/calendar.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-03-21/calendar.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['listing_id', 'date', 'available']
+- **[INFO]** `2026-03-21/calendar.csv` — row_count: Tổng số dòng đọc được: 4,950,495
+- **[PASS]** `2026-03-21/calendar.csv` — invalid_dates: Không phát hiện giá trị ngày không hợp lệ.
+- **[INFO]** `2026-03-21/calendar.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2026-03-21/reviews.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-03-21/reviews.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['listing_id', 'id', 'date', 'comments']
+- **[INFO]** `2026-03-21/reviews.csv` — row_count: Tổng số dòng đọc được: 649,874
+- **[PASS]** `2026-03-21/reviews.csv` — duplicate_ids: Không phát hiện ID trùng trong cột id.
+- **[PASS]** `2026-03-21/reviews.csv` — invalid_dates: Không phát hiện giá trị ngày không hợp lệ.
+- **[WARNING]** `2026-03-21/reviews.csv` — missing_comments: Có 95/649,874 review không có comments (0.01%).
+- **[INFO]** `2026-03-21/reviews.csv` — short_comments: Có 5,051 comments ngắn hơn 5 ký tự.
+- **[INFO]** `2026-03-21/reviews.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2026-03-21/neighbourhoods.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-03-21/neighbourhoods.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['neighbourhood']
+- **[INFO]** `2026-03-21/neighbourhoods.csv` — row_count: Tổng số dòng đọc được: 38
+- **[INFO]** `2026-03-21/neighbourhoods.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2026-03-21/neighbourhoods.geojson` — file_exists: File tồn tại.
+- **[PASS]** `2026-03-21/neighbourhoods.geojson` — geojson_structure: GeoJSON hợp lệ về cấu trúc cơ bản; có 38 features.
+- **[PASS]** `2026-06-16/-` — snapshot_exists: Thư mục snapshot tồn tại.
+- **[PASS]** `2026-06-16/listings.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/listings.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['id', 'latitude', 'longitude']
+- **[INFO]** `2026-06-16/listings.csv` — row_count: Tổng số dòng đọc được: 20,573
+- **[PASS]** `2026-06-16/listings.csv` — duplicate_ids: Không phát hiện ID trùng trong cột id.
+- **[PASS]** `2026-06-16/listings.csv` — invalid_coordinates: Không phát hiện tọa độ ngoài phạm vi.
+- **[WARNING]** `2026-06-16/listings.csv` — price_missing: Cột price thiếu 2,787 giá trị.
+- **[INFO]** `2026-06-16/listings.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2026-06-16/calendar.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/calendar.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['listing_id', 'date', 'available']
+- **[INFO]** `2026-06-16/calendar.csv` — row_count: Tổng số dòng đọc được: 7,509,145
+- **[PASS]** `2026-06-16/calendar.csv` — invalid_dates: Không phát hiện giá trị ngày không hợp lệ.
+- **[INFO]** `2026-06-16/calendar.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2026-06-16/reviews.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/reviews.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['listing_id', 'id', 'date', 'comments']
+- **[INFO]** `2026-06-16/reviews.csv` — row_count: Tổng số dòng đọc được: 801,398
+- **[PASS]** `2026-06-16/reviews.csv` — duplicate_ids: Không phát hiện ID trùng trong cột id.
+- **[PASS]** `2026-06-16/reviews.csv` — invalid_dates: Không phát hiện giá trị ngày không hợp lệ.
+- **[WARNING]** `2026-06-16/reviews.csv` — missing_comments: Có 123/801,398 review không có comments (0.02%).
+- **[INFO]** `2026-06-16/reviews.csv` — short_comments: Có 6,286 comments ngắn hơn 5 ký tự.
+- **[INFO]** `2026-06-16/reviews.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2026-06-16/neighbourhoods.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/neighbourhoods.csv` — required_columns: Đã tìm thấy các cột bắt buộc: ['neighbourhood']
+- **[INFO]** `2026-06-16/neighbourhoods.csv` — row_count: Tổng số dòng đọc được: 38
+- **[INFO]** `2026-06-16/neighbourhoods.csv` — duplicate_rows: Không phát hiện dòng trùng trong phạm vi từng chunk; chưa kiểm tra trùng dòng giữa các chunk.
+- **[PASS]** `2026-06-16/neighbourhoods.geojson` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/neighbourhoods.geojson` — geojson_structure: GeoJSON hợp lệ về cấu trúc cơ bản; có 38 features.
