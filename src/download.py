@@ -81,16 +81,34 @@ def run_download(config_path: str):
     if not os.path.exists(config_path):
         raise FileNotFoundError(f"Không tìm thấy file cấu hình: {config_path}")
 
-    with open(config_path, "r", encoding="utf-8") as f:
-        config = yaml.safe_load(f)
+    # Đọc an toàn với utf-8-sig (chống lỗi BOM) và xóa ký tự Tab thừa (chống lỗi cú pháp YAML)
+    with open(config_path, "r", encoding="utf-8-sig") as f:
+        raw_content = f.read().replace("\t", " ")
+        config = yaml.safe_load(raw_content) or {}
 
     city = config.get("city_name", config.get("city", "Sydney"))
-    data_root = config["data_root"]       # 'australia/nsw/sydney'
-    snapshots = config["snapshots"]       # 4 mốc ngày
+    snapshots = [str(s).strip() for s in config.get("snapshots", [])]
+
+    # Danh mục ánh xạ tên thành phố -> đường dẫn trên Inside Airbnb
+    CITY_WEB_PATHS = {
+        "sydney": "australia/nsw/sydney",
+    }
+
+    # Tự động nhận diện đường dẫn web:
+    # Nếu data_root trong file config đã là đường dẫn web (chứa "/" và không phải thư mục local "data/raw")
+    data_root_cfg = str(config.get("data_root", "")).strip()
+    if "/" in data_root_cfg and data_root_cfg not in ["data/raw", "data/raw/"]:
+        web_path = data_root_cfg
+    else:
+        city_lower = str(city).strip().lower()
+        web_path = CITY_WEB_PATHS.get(city_lower, f"australia/nsw/{city_lower}")
+
+    local_raw_dir = os.path.join("data", "raw")
 
     print(f"==================================================")
     print(f" BẮT ĐẦU TẢI DỮ LIỆU: {city.upper()}")
-    print(f" Data root: {data_root}")
+    print(f" Web path: {web_path}")
+    print(f" Local save directory: {local_raw_dir}")
     print(f" Số mốc snapshots: {len(snapshots)}")
     print(f"==================================================")
 
@@ -108,10 +126,10 @@ def run_download(config_path: str):
         print(f"\n>>> Đang xử lý mốc snapshot: {date}")
         for rel_path, key_col in target_tables:
             filename = os.path.basename(rel_path)
-            download_url = f"{base_url}/{data_root}/{date}/{rel_path}"
+            download_url = f"{base_url}/{web_path}/{date}/{rel_path}"
             
             # Lưu vào: data/raw/<mốc_ngày>/<tên_file>
-            save_path = os.path.join("data", "raw", date, filename)
+            save_path = os.path.join(local_raw_dir, date, filename)
 
             # 1. Tải
             success = download_file(download_url, save_path)
@@ -122,7 +140,7 @@ def run_download(config_path: str):
 
     print(f"\n==================================================")
     print(f" HOÀN TẤT BƯỚC THU THẬP DỮ LIỆU!")
-    print(f" Dữ liệu đã sẵn sàng trong thư mục: data/raw/")
+    print(f" Dữ liệu đã sẵn sàng trong thư mục: {local_raw_dir}")
     print(f"==================================================")
 
 
