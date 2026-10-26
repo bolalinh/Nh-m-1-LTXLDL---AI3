@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-10-19T01:27:10",
+  "generated_at": "2026-10-26T23:04:18",
   "summary": {
     "ERROR": 2,
-    "WARNING": 107,
-    "INFO": 135,
-    "PASS": 86
+    "WARNING": 106,
+    "INFO": 136,
+    "PASS": 89
   },
   "checks": [
     {
@@ -512,11 +512,32 @@
       "message": "Thiếu file; kiểm tra tên file/đường dẫn và tải lại nếu cần."
     },
     {
-      "level": "WARNING",
+      "level": "PASS",
       "snapshot": "2025-09-12",
       "file": "neighbourhoods.geojson",
       "check": "file_exists",
-      "message": "Thiếu file; kiểm tra tên file/đường dẫn và tải lại nếu cần."
+      "message": "File tồn tại."
+    },
+    {
+      "level": "INFO",
+      "snapshot": "2025-09-12",
+      "file": "neighbourhoods.geojson",
+      "check": "geojson_feature_count",
+      "message": "Có 38 features."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "neighbourhoods.geojson",
+      "check": "geojson_features",
+      "message": "Feature không hợp lệ: 0."
+    },
+    {
+      "level": "PASS",
+      "snapshot": "2025-09-12",
+      "file": "neighbourhoods.geojson",
+      "check": "geojson_geometry",
+      "message": "Feature thiếu geometry/tọa độ: 0."
     },
     {
       "level": "PASS",

@@ -1,9 +1,9 @@
 ﻿city_name: "Sydney"
 data_root: "data/raw"
 snapshots:
-  - "2025-09-12"	
-  - "2025-12-12"	
-  - "2026-03-21"	
+  - "2025-09-12"
+  - "2025-12-12"
+  - "2026-03-21"
   - "2026-06-16"
 qa_params:
   min_length: 5

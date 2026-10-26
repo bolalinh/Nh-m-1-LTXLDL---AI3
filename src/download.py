@@ -23,12 +23,27 @@ def resolve_project_path(path_value: str, default: str = "data/raw") -> Path:
     return candidate
 
 
+def extract_gzip_csv(gz_path: str) -> str | None:
+    """Giải nén file .csv.gz sang file .csv cùng thư mục để cho qa.py đọc được."""
+    if not gz_path.endswith(".csv.gz"):
+        return None
+    csv_path = gz_path[:-3]  # bỏ .gz
+    if os.path.exists(csv_path):
+        return csv_path
+    try:
+        with gzip.open(gz_path, "rb") as src, open(csv_path, "wb") as dst:
+            dst.write(src.read())
+        return csv_path
+    except Exception as exc:
+        print(f"   [LỖI GIẢI NÉN] {gz_path}: {exc}")
+        return None
+
+
 def download_file(url: str, save_path: str) -> bool:
     """
     Tải 1 file từ URL và lưu vào save_path.
     Nếu file đã có trên máy và > 0 bytes -> Bỏ qua không tải lại (Caching).
     """
-    # 1. Kiểm tra nếu đã tải rồi thì thôi
     if os.path.exists(save_path) and os.path.getsize(save_path) > 0:
         print(f"   [ĐÃ CÓ] {os.path.basename(save_path)} -> Bỏ qua tải lại.")
         return True
@@ -36,25 +51,26 @@ def download_file(url: str, save_path: str) -> bool:
     print(f"   [ĐANG TẢI] {url} ...")
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
-    # 2. Gửi request giả lập trình duyệt để không bị server Inside Airbnb chặn
     headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
     
     try:
         with requests.get(url, headers=headers, stream=True, timeout=120) as response:
             if response.status_code == 200:
                 with open(save_path, "wb") as f:
-                    # Ghi từng khối 1MB vào đĩa để tránh tràn RAM
                     for chunk in response.iter_content(chunk_size=1024 * 1024):
                         if chunk:
                             f.write(chunk)
                 print(f"   [XONG] Đã lưu vào {save_path}")
+                if save_path.endswith(".csv.gz"):
+                    extracted = extract_gzip_csv(save_path)
+                    if extracted:
+                        print(f"   [GIẢI NÉN] Tạo file CSV gốc tại {extracted}")
                 return True
             else:
                 print(f"   [THẤT BẠI] Mã lỗi HTTP: {response.status_code}")
                 return False
     except Exception as e:
         print(f"   [LỖI MẠNG] {e}")
-        # Xóa file rác nếu tải dở dang
         if os.path.exists(save_path):
             os.remove(save_path)
         return False

@@ -1,13 +1,13 @@
 # Data Quality Report
 
-- Generated at: 2026-10-19T01:27:10
+- Generated at: 2026-10-26T23:04:18
 
 ## Summary
 
 - **ERROR:** 2
-- **WARNING:** 107
-- **INFO:** 135
-- **PASS:** 86
+- **WARNING:** 106
+- **INFO:** 136
+- **PASS:** 89
 
 ## Details
 
@@ -83,7 +83,10 @@
 - **[PASS]** `2025-09-12/reviews.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
 - **[INFO]** `2025-09-12/reviews.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2025-09-12\reviews.csv; dữ liệu gốc được giữ nguyên.
 - **[WARNING]** `2025-09-12/neighbourhoods.csv` — file_exists: Thiếu file; kiểm tra tên file/đường dẫn và tải lại nếu cần.
-- **[WARNING]** `2025-09-12/neighbourhoods.geojson` — file_exists: Thiếu file; kiểm tra tên file/đường dẫn và tải lại nếu cần.
+- **[PASS]** `2025-09-12/neighbourhoods.geojson` — file_exists: File tồn tại.
+- **[INFO]** `2025-09-12/neighbourhoods.geojson` — geojson_feature_count: Có 38 features.
+- **[PASS]** `2025-09-12/neighbourhoods.geojson` — geojson_features: Feature không hợp lệ: 0.
+- **[PASS]** `2025-09-12/neighbourhoods.geojson` — geojson_geometry: Feature thiếu geometry/tọa độ: 0.
 - **[PASS]** `2025-12-12/-` — snapshot_exists: Thư mục snapshot tồn tại.
 - **[PASS]** `2025-12-12/listings.csv` — file_exists: File tồn tại.
 - **[PASS]** `2025-12-12/listings.csv` — required_columns: Đủ cột bắt buộc: ['id', 'latitude', 'longitude']
