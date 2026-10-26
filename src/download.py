@@ -7,8 +7,20 @@ Cách chạy độc lập: python src/download.py --config configs/sydney.yaml
 import os
 import gzip
 import argparse
+from pathlib import Path
+
 import yaml
 import requests
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+
+
+def resolve_project_path(path_value: str, default: str = "data/raw") -> Path:
+    """Chuyển relative path về project root để đồng bộ với qa.py và kpi.py."""
+    candidate = Path(path_value) if path_value else Path(default)
+    if not candidate.is_absolute():
+        candidate = PROJECT_ROOT / candidate
+    return candidate
 
 
 def download_file(url: str, save_path: str) -> bool:
@@ -62,7 +74,7 @@ def check_integrity(file_path: str, key_column: str = None) -> bool:
     if key_column and file_path.endswith(".csv.gz"):
         try:
             with gzip.open(file_path, "rt", encoding="utf-8", errors="ignore") as f:
-                header = f.readline() # Đọc dòng đầu tiên chứa tên các cột
+                header = f.readline()  # Đọc dòng đầu tiên chứa tên các cột
                 columns = [c.strip().strip('"') for c in header.split(",")]
                 if key_column not in columns:
                     print(f"   [LỖI TOÀN VẸN] Thiếu cột khóa chính '{key_column}' trong {file_path}")
@@ -78,16 +90,21 @@ def check_integrity(file_path: str, key_column: str = None) -> bool:
 
 def run_download(config_path: str):
     """Đọc file config và tải đủ các bảng cho 4 mốc snapshots."""
-    if not os.path.exists(config_path):
+    config_file = Path(config_path)
+    if not config_file.is_absolute():
+        config_file = PROJECT_ROOT / config_file
+    if not config_file.exists():
         raise FileNotFoundError(f"Không tìm thấy file cấu hình: {config_path}")
 
     # Đọc an toàn với utf-8-sig (chống lỗi BOM) và xóa ký tự Tab thừa (chống lỗi cú pháp YAML)
-    with open(config_path, "r", encoding="utf-8-sig") as f:
+    with open(config_file, "r", encoding="utf-8-sig") as f:
         raw_content = f.read().replace("\t", " ")
         config = yaml.safe_load(raw_content) or {}
 
     city = config.get("city_name", config.get("city", "Sydney"))
     snapshots = [str(s).strip() for s in config.get("snapshots", [])]
+    data_root_cfg = str(config.get("data_root", "data/raw")).strip()
+    local_raw_dir = resolve_project_path(data_root_cfg, "data/raw")
 
     # Danh mục ánh xạ tên thành phố -> đường dẫn trên Inside Airbnb
     CITY_WEB_PATHS = {
@@ -96,14 +113,12 @@ def run_download(config_path: str):
 
     # Tự động nhận diện đường dẫn web:
     # Nếu data_root trong file config đã là đường dẫn web (chứa "/" và không phải thư mục local "data/raw")
-    data_root_cfg = str(config.get("data_root", "")).strip()
-    if "/" in data_root_cfg and data_root_cfg not in ["data/raw", "data/raw/"]:
-        web_path = data_root_cfg
+    web_path_cfg = data_root_cfg
+    if "/" in web_path_cfg and web_path_cfg not in ["data/raw", "data/raw/"] and not Path(web_path_cfg).exists():
+        web_path = web_path_cfg
     else:
         city_lower = str(city).strip().lower()
         web_path = CITY_WEB_PATHS.get(city_lower, f"australia/nsw/{city_lower}")
-
-    local_raw_dir = os.path.join("data", "raw")
 
     print(f"==================================================")
     print(f" BẮT ĐẦU TẢI DỮ LIỆU: {city.upper()}")
@@ -127,13 +142,11 @@ def run_download(config_path: str):
         for rel_path, key_col in target_tables:
             filename = os.path.basename(rel_path)
             download_url = f"{base_url}/{web_path}/{date}/{rel_path}"
-            
-            # Lưu vào: data/raw/<mốc_ngày>/<tên_file>
-            save_path = os.path.join(local_raw_dir, date, filename)
+            save_path = str(local_raw_dir / date / filename)
 
             # 1. Tải
             success = download_file(download_url, save_path)
-            
+
             # 2. Kiểm tra tính toàn vẹn
             if success:
                 check_integrity(save_path, key_column=key_col)
@@ -143,10 +156,3 @@ def run_download(config_path: str):
     print(f" Dữ liệu đã sẵn sàng trong thư mục: {local_raw_dir}")
     print(f"==================================================")
 
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Tải dữ liệu Inside Airbnb tự động.")
-    parser.add_argument("--config", type=str, default="configs/sydney.yaml", help="Đường dẫn file yaml")
-    args = parser.parse_args()
-
-    run_download(args.config)

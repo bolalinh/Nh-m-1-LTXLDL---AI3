@@ -31,6 +31,7 @@ Cách chạy độc lập:
 import argparse
 import os
 import sys
+from pathlib import Path
 from typing import Optional
 
 import numpy as np
@@ -41,6 +42,8 @@ try:
     sys.stdout.reconfigure(encoding='utf-8')
 except Exception:
     pass
+
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # Định nghĩa các hằng số tên cột dữ liệu
 REVIEW_COUNT_COL = "number_of_reviews"
@@ -57,10 +60,50 @@ ANALYSIS_AREA_COL = "analysis_area"
 
 def load_config(config_path: str) -> dict:
     """Đọc file yaml cấu hình (dùng utf-8-sig để xử lý BOM nếu có)."""
-    if not os.path.exists(config_path):
+    config_file = Path(config_path)
+    if not config_file.is_absolute():
+        config_file = PROJECT_ROOT / config_file
+    if not config_file.exists():
         return {}
-    with open(config_path, "r", encoding="utf-8-sig") as f:
+    with open(config_file, "r", encoding="utf-8-sig") as f:
         return yaml.safe_load(f) or {}
+
+
+def _resolve_project_path(path: Optional[str], default: str) -> Path:
+    """Chuyển đường dẫn relative sang project root để đồng bộ với qa.py."""
+    candidate = Path(path) if path is not None else Path(default)
+    if not candidate.is_absolute():
+        candidate = PROJECT_ROOT / candidate
+    return candidate
+
+
+def _load_listing_frames(processed_dir: Path, snapshots: list[str]) -> pd.DataFrame:
+    """Tìm file listings đã QA theo kiểu mới, hỗ trợ cả chuẩn cũ và tên legacy."""
+    frames = []
+    for snap in snapshots:
+        candidate_paths = [
+            processed_dir / str(snap) / "listings.csv",
+            processed_dir / str(snap) / "listings_clean.csv",
+            processed_dir / str(snap) / f"listings_clean_{snap}.csv",
+            processed_dir / f"listings_clean_{snap}.csv",
+            processed_dir / "listings_clean.csv",
+        ]
+        found = next((p for p in candidate_paths if p.exists()), None)
+        if found is None:
+            continue
+
+        df_snap = pd.read_csv(found)
+        if "snapshot" not in df_snap.columns:
+            df_snap["snapshot"] = str(snap)
+        frames.append(df_snap)
+
+    if not frames:
+        raise FileNotFoundError(
+            "Không tìm thấy dữ liệu listings đã QA trong processed dir. "
+            "Cần có file như: data/processed/<snapshot>/listings.csv hoặc data/processed/listings_clean_<snapshot>.csv"
+        )
+
+    return pd.concat(frames, ignore_index=True)
 
 
 def clean_price(series: pd.Series) -> pd.Series:
@@ -254,28 +297,11 @@ def run_kpi(config_path: str = "configs/sydney.yaml",
     if not snapshots:
         snapshots = ["2025-09-12", "2025-12-12", "2026-03-21", "2026-06-16"]
 
-    processed_dir = processed_dir or cfg.get("processed_dir", "data/processed")
-    output_dir = output_dir or processed_dir
-    os.makedirs(output_dir, exist_ok=True)
+    processed_dir_path = _resolve_project_path(processed_dir, cfg.get("processed_dir", "data/processed"))
+    output_dir_path = _resolve_project_path(output_dir, str(processed_dir_path))
+    output_dir_path.mkdir(parents=True, exist_ok=True)
 
-    # Đọc dữ liệu: Ưu tiên ghép các file snapshot riêng nếu có, hoặc dùng file listings_clean.csv
-    frames = []
-    for snap in snapshots:
-        path = os.path.join(processed_dir, f"listings_clean_{snap}.csv")
-        if os.path.exists(path):
-            df_snap = pd.read_csv(path)
-            df_snap["snapshot"] = snap
-            frames.append(df_snap)
-
-    if frames:
-        data = pd.concat(frames, ignore_index=True)
-    else:
-        combined_path = os.path.join(processed_dir, "listings_clean.csv")
-        if os.path.exists(combined_path):
-            data = pd.read_csv(combined_path)
-        else:
-            fallback = os.path.join(processed_dir, "listings_subset.csv")
-            data = pd.read_csv(fallback)
+    data = _load_listing_frames(processed_dir_path, snapshots)
 
     if 'price_clean' not in data.columns and 'price' in data.columns:
         data['price_clean'] = clean_price(data['price'])
@@ -292,7 +318,7 @@ def run_kpi(config_path: str = "configs/sydney.yaml",
 
     # 2. Xuất 3 bảng KPI chuyên sâu của nhóm (KPI 5, 6, 7)
     tbl_rev_rate = breakdown(data, kpi_review_rate)
-    path_rev_rate = os.path.join(output_dir, "kpi_review_rate.csv")
+    path_rev_rate = str(output_dir_path / "kpi_review_rate.csv")
     tbl_rev_rate.to_csv(path_rev_rate, index=False)
     outputs["kpi_review_rate"] = tbl_rev_rate
     print(f"   [GHI] {path_rev_rate}: {len(tbl_rev_rate)} dòng")
@@ -305,7 +331,7 @@ def run_kpi(config_path: str = "configs/sydney.yaml",
             for area, gg in g.groupby(AREA_COL):
                 score_rows.append({"snapshot": snap, AREA_COL: area, **kpi_avg_review_score(gg, sc)})
     tbl_score = pd.DataFrame(score_rows)
-    path_score = os.path.join(output_dir, "kpi_review_score.csv")
+    path_score = str(output_dir_path / "kpi_review_score.csv")
     tbl_score.to_csv(path_score, index=False)
     outputs["kpi_review_score"] = tbl_score
     print(f"   [GHI] {path_score}: {len(tbl_score)} dòng")
@@ -313,7 +339,7 @@ def run_kpi(config_path: str = "configs/sydney.yaml",
     host_rows = [{"snapshot": snap, **kpi_listings_per_host(g)}
                  for snap, g in data.groupby("snapshot")]
     tbl_hosts = pd.DataFrame(host_rows)
-    path_hosts = os.path.join(output_dir, "kpi_listings_per_host.csv")
+    path_hosts = str(output_dir_path / "kpi_listings_per_host.csv")
     tbl_hosts.to_csv(path_hosts, index=False)
     outputs["kpi_listings_per_host"] = tbl_hosts
     print(f"   [GHI] {path_hosts}: {len(tbl_hosts)} dòng")
@@ -342,7 +368,7 @@ def run_kpi(config_path: str = "configs/sydney.yaml",
         {'kpi_name': 'Multi-host Listing Share', 'value': host_dict['pct_listings_multi_host'], 'unit': '%', 'description': 'Tỷ lệ listing thuộc các chủ nhà sở hữu từ 2 căn trở lên'}
     ]
     df_summary = pd.DataFrame(summary_rows)
-    path_summary = os.path.join(output_dir, "kpi_summary.csv")
+    path_summary = str(output_dir_path / "kpi_summary.csv")
     df_summary.to_csv(path_summary, index=False)
     outputs["kpi_summary"] = df_summary
     print(f"   [GHI] {path_summary}: {len(df_summary)} chỉ số")
@@ -368,7 +394,7 @@ def run_kpi(config_path: str = "configs/sydney.yaml",
             'pct_listings_multi_host': h_d['pct_listings_multi_host']
         })
     df_temporal = pd.DataFrame(time_rows)
-    path_temporal = os.path.join(output_dir, "kpi_by_time.csv")
+    path_temporal = str(output_dir_path / "kpi_by_time.csv")
     df_temporal.to_csv(path_temporal, index=False)
     outputs["kpi_by_time"] = df_temporal
     print(f"   [GHI] {path_temporal}: {len(df_temporal)} dòng")
@@ -393,7 +419,7 @@ def run_kpi(config_path: str = "configs/sydney.yaml",
             'listings_per_host': h_d['listings_per_host']
         })
     df_spatial = pd.DataFrame(area_rows)
-    path_spatial = os.path.join(output_dir, "kpi_by_area.csv")
+    path_spatial = str(output_dir_path / "kpi_by_area.csv")
     df_spatial.to_csv(path_spatial, index=False)
     outputs["kpi_by_area"] = df_spatial
     print(f"   [GHI] {path_spatial}: {len(df_spatial)} dòng")
@@ -415,7 +441,7 @@ def run_kpi(config_path: str = "configs/sydney.yaml",
             'avg_review_score_100': sc_d['avg_review_score']
         })
     df_room = pd.DataFrame(room_rows)
-    path_room = os.path.join(output_dir, "kpi_by_room_type.csv")
+    path_room = str(output_dir_path / "kpi_by_room_type.csv")
     df_room.to_csv(path_room, index=False)
     outputs["kpi_by_room_type"] = df_room
     print(f"   [GHI] {path_room}: {len(df_room)} dòng")
@@ -449,8 +475,8 @@ def run_kpi_computation(input_path: str = "data/processed/listings_clean.csv",
                         output_dir: str = "data/processed",
                         config: Optional[dict] = None):
     """Hàm wrapper đảm bảo tương thích ngược 100% với run_pipeline.py."""
-    config_path = "configs/sydney.yaml"
-    outputs = run_kpi(config_path=config_path, processed_dir=output_dir, output_dir=output_dir)
+    processed_root = _resolve_project_path(output_dir, "data/processed")
+    outputs = run_kpi(config_path="configs/sydney.yaml", processed_dir=str(processed_root), output_dir=str(processed_root))
     return outputs["kpi_summary"], outputs["kpi_by_time"], outputs["kpi_by_area"], outputs["kpi_by_room_type"]
 
 
