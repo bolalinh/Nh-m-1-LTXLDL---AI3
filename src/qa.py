@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-=======
+
 from __future__ import annotations
 
 import json
@@ -441,4 +440,3 @@ def run_qa(config_path=DEFAULT_CONFIG, clean=True):
 
 if __name__ == "__main__":
     run_qa()
->>>>>>> Stashed changes
