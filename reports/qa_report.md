@@ -1,0 +1,343 @@
+# Data Quality Report
+
+- Generated at: 2026-10-19T01:27:10
+
+## Summary
+
+- **ERROR:** 2
+- **WARNING:** 107
+- **INFO:** 135
+- **PASS:** 86
+
+## Details
+
+- **[PASS]** `2025-09-12/-` — snapshot_exists: Thư mục snapshot tồn tại.
+- **[PASS]** `2025-09-12/listings.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-09-12/listings.csv` — required_columns: Đủ cột bắt buộc: ['id', 'latitude', 'longitude']
+- **[INFO]** `2025-09-12/listings.csv` — row_count: Đọc được 17,730 dòng.
+- **[INFO]** `2025-09-12/listings.csv` — missing_description: Thiếu 278/17,730 (1.57%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_neighborhood_overview: Thiếu 9,617/17,730 (54.24%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_name: Thiếu 2/17,730 (0.01%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_since: Thiếu 2/17,730 (0.01%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_location: Thiếu 4,564/17,730 (25.74%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_about: Thiếu 7,352/17,730 (41.47%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_response_time: Thiếu 3,342/17,730 (18.85%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_response_rate: Thiếu 3,342/17,730 (18.85%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_acceptance_rate: Thiếu 2,309/17,730 (13.02%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_is_superhost: Thiếu 632/17,730 (3.56%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_thumbnail_url: Thiếu 2/17,730 (0.01%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_picture_url: Thiếu 2/17,730 (0.01%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_neighbourhood: Thiếu 13,096/17,730 (73.86%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_listings_count: Thiếu 2/17,730 (0.01%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_total_listings_count: Thiếu 2/17,730 (0.01%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_verifications: Thiếu 2/17,730 (0.01%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_has_profile_pic: Thiếu 2/17,730 (0.01%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_host_identity_verified: Thiếu 2/17,730 (0.01%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_neighbourhood: Thiếu 9,617/17,730 (54.24%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_neighbourhood_group_cleansed: Thiếu 17,730/17,730 (100.00%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_bathrooms: Thiếu 17,730/17,730 (100.00%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_bathrooms_text: Thiếu 11/17,730 (0.06%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_bedrooms: Thiếu 3,671/17,730 (20.71%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_beds: Thiếu 17,730/17,730 (100.00%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_minimum_minimum_nights: Thiếu 10/17,730 (0.06%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_maximum_minimum_nights: Thiếu 10/17,730 (0.06%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_minimum_maximum_nights: Thiếu 10/17,730 (0.06%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_maximum_maximum_nights: Thiếu 10/17,730 (0.06%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_calendar_updated: Thiếu 17,730/17,730 (100.00%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_has_availability: Thiếu 115/17,730 (0.65%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_estimated_revenue_l365d: Thiếu 17,730/17,730 (100.00%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_first_review: Thiếu 2,710/17,730 (15.28%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_last_review: Thiếu 2,710/17,730 (15.28%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_review_scores_rating: Thiếu 2,710/17,730 (15.28%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_review_scores_accuracy: Thiếu 2,712/17,730 (15.30%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_review_scores_cleanliness: Thiếu 2,711/17,730 (15.29%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_review_scores_checkin: Thiếu 2,712/17,730 (15.30%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_review_scores_communication: Thiếu 2,711/17,730 (15.29%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_review_scores_location: Thiếu 2,712/17,730 (15.30%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_review_scores_value: Thiếu 2,712/17,730 (15.30%).
+- **[INFO]** `2025-09-12/listings.csv` — missing_license: Thiếu 1,354/17,730 (7.64%).
+- **[WARNING]** `2025-09-12/listings.csv` — missing_reviews_per_month: Thiếu 2,710/17,730 (15.28%).
+- **[PASS]** `2025-09-12/listings.csv` — duplicate_ids: Không phát hiện ID trùng.
+- **[PASS]** `2025-09-12/listings.csv` — coordinates: Tọa độ thiếu/không đọc được: 0; ngoài phạm vi: 0.
+- **[ERROR]** `2025-09-12/listings.csv` — price_all_missing: Toàn bộ price bị thiếu; KPI giá không thể tính từ cột này.
+- **[WARNING]** `2025-09-12/listings.csv` — price_missing: Thiếu 17,730 giá.
+- **[PASS]** `2025-09-12/listings.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2025-09-12/listings.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2025-09-12\listings.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2025-09-12/calendar.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-09-12/calendar.csv` — required_columns: Đủ cột bắt buộc: ['listing_id', 'date', 'available']
+- **[INFO]** `2025-09-12/calendar.csv` — row_count: Đọc được 6,471,450 dòng.
+- **[INFO]** `2025-09-12/calendar.csv` — missing_adjusted_price: Thiếu 6,471,450/6,471,450 (100.00%).
+- **[PASS]** `2025-09-12/calendar.csv` — invalid_dates: Không phát hiện ngày không hợp lệ.
+- **[PASS]** `2025-09-12/calendar.csv` — available_domain: Các giá trị available đều thuộc miền Boolean nhận diện được.
+- **[PASS]** `2025-09-12/calendar.csv` — duplicate_listing_date: Không phát hiện khóa (listing_id, date) trùng.
+- **[PASS]** `2025-09-12/calendar.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2025-09-12/calendar.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2025-09-12\calendar.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2025-09-12/reviews.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-09-12/reviews.csv` — required_columns: Đủ cột bắt buộc: ['listing_id', 'id', 'date', 'comments']
+- **[INFO]** `2025-09-12/reviews.csv` — row_count: Đọc được 693,896 dòng.
+- **[INFO]** `2025-09-12/reviews.csv` — missing_reviewer_name: Thiếu 1/693,896 (0.00%).
+- **[PASS]** `2025-09-12/reviews.csv` — duplicate_ids: Không phát hiện ID trùng.
+- **[PASS]** `2025-09-12/reviews.csv` — invalid_dates: Không phát hiện ngày không hợp lệ.
+- **[WARNING]** `2025-09-12/reviews.csv` — missing_comments: Có 102 review rỗng/thiếu nội dung.
+- **[INFO]** `2025-09-12/reviews.csv` — short_comments: Có 5,151 comments ngắn hơn 5 ký tự.
+- **[PASS]** `2025-09-12/reviews.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2025-09-12/reviews.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2025-09-12\reviews.csv; dữ liệu gốc được giữ nguyên.
+- **[WARNING]** `2025-09-12/neighbourhoods.csv` — file_exists: Thiếu file; kiểm tra tên file/đường dẫn và tải lại nếu cần.
+- **[WARNING]** `2025-09-12/neighbourhoods.geojson` — file_exists: Thiếu file; kiểm tra tên file/đường dẫn và tải lại nếu cần.
+- **[PASS]** `2025-12-12/-` — snapshot_exists: Thư mục snapshot tồn tại.
+- **[PASS]** `2025-12-12/listings.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/listings.csv` — required_columns: Đủ cột bắt buộc: ['id', 'latitude', 'longitude']
+- **[INFO]** `2025-12-12/listings.csv` — row_count: Đọc được 20,436 dòng.
+- **[INFO]** `2025-12-12/listings.csv` — missing_description: Thiếu 301/20,436 (1.47%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_neighborhood_overview: Thiếu 20,436/20,436 (100.00%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_profile_url: Thiếu 1/20,436 (0.00%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_name: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_since: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_hosts_time_as_user_years: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_hosts_time_as_user_months: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_hosts_time_as_host_years: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_hosts_time_as_host_months: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_location: Thiếu 5,490/20,436 (26.86%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_about: Thiếu 8,686/20,436 (42.50%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_response_time: Thiếu 3,146/20,436 (15.39%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_response_rate: Thiếu 3,146/20,436 (15.39%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_acceptance_rate: Thiếu 2,484/20,436 (12.16%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_thumbnail_url: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_picture_url: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_neighbourhood: Thiếu 15,670/20,436 (76.68%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_listings_count: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_total_listings_count: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_verifications: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_has_profile_pic: Thiếu 6/20,436 (0.03%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_host_identity_verified: Thiếu 6/20,436 (0.03%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_neighbourhood: Thiếu 20,436/20,436 (100.00%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_neighbourhood_group_cleansed: Thiếu 20,436/20,436 (100.00%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_bathrooms: Thiếu 2,614/20,436 (12.79%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_bathrooms_text: Thiếu 18/20,436 (0.09%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_bedrooms: Thiếu 468/20,436 (2.29%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_beds: Thiếu 2,635/20,436 (12.89%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_minimum_minimum_nights: Thiếu 2/20,436 (0.01%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_maximum_minimum_nights: Thiếu 2/20,436 (0.01%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_minimum_maximum_nights: Thiếu 2/20,436 (0.01%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_maximum_maximum_nights: Thiếu 2/20,436 (0.01%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_calendar_updated: Thiếu 20,436/20,436 (100.00%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_has_availability: Thiếu 238/20,436 (1.16%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_estimated_revenue_l365d: Thiếu 20,436/20,436 (100.00%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_first_review: Thiếu 4,169/20,436 (20.40%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_last_review: Thiếu 4,169/20,436 (20.40%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_review_scores_rating: Thiếu 4,169/20,436 (20.40%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_review_scores_accuracy: Thiếu 4,171/20,436 (20.41%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_review_scores_cleanliness: Thiếu 4,170/20,436 (20.41%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_review_scores_checkin: Thiếu 4,171/20,436 (20.41%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_review_scores_communication: Thiếu 4,170/20,436 (20.41%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_review_scores_location: Thiếu 4,171/20,436 (20.41%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_review_scores_value: Thiếu 4,171/20,436 (20.41%).
+- **[INFO]** `2025-12-12/listings.csv` — missing_license: Thiếu 1,389/20,436 (6.80%).
+- **[WARNING]** `2025-12-12/listings.csv` — missing_reviews_per_month: Thiếu 4,169/20,436 (20.40%).
+- **[PASS]** `2025-12-12/listings.csv` — duplicate_ids: Không phát hiện ID trùng.
+- **[PASS]** `2025-12-12/listings.csv` — coordinates: Tọa độ thiếu/không đọc được: 0; ngoài phạm vi: 0.
+- **[ERROR]** `2025-12-12/listings.csv` — price_all_missing: Toàn bộ price bị thiếu; KPI giá không thể tính từ cột này.
+- **[WARNING]** `2025-12-12/listings.csv` — price_missing: Thiếu 20,436 giá.
+- **[PASS]** `2025-12-12/listings.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2025-12-12/listings.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2025-12-12\listings.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2025-12-12/calendar.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/calendar.csv` — required_columns: Đủ cột bắt buộc: ['listing_id', 'date', 'available']
+- **[INFO]** `2025-12-12/calendar.csv` — row_count: Đọc được 7,459,152 dòng.
+- **[PASS]** `2025-12-12/calendar.csv` — invalid_dates: Không phát hiện ngày không hợp lệ.
+- **[PASS]** `2025-12-12/calendar.csv` — available_domain: Các giá trị available đều thuộc miền Boolean nhận diện được.
+- **[PASS]** `2025-12-12/calendar.csv` — duplicate_listing_date: Không phát hiện khóa (listing_id, date) trùng.
+- **[PASS]** `2025-12-12/calendar.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2025-12-12/calendar.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2025-12-12\calendar.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2025-12-12/reviews.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/reviews.csv` — required_columns: Đủ cột bắt buộc: ['listing_id', 'id', 'date', 'comments']
+- **[INFO]** `2025-12-12/reviews.csv` — row_count: Đọc được 737,733 dòng.
+- **[INFO]** `2025-12-12/reviews.csv` — missing_reviewer_name: Thiếu 1/737,733 (0.00%).
+- **[PASS]** `2025-12-12/reviews.csv` — duplicate_ids: Không phát hiện ID trùng.
+- **[PASS]** `2025-12-12/reviews.csv` — invalid_dates: Không phát hiện ngày không hợp lệ.
+- **[WARNING]** `2025-12-12/reviews.csv` — missing_comments: Có 111 review rỗng/thiếu nội dung.
+- **[INFO]** `2025-12-12/reviews.csv` — short_comments: Có 5,649 comments ngắn hơn 5 ký tự.
+- **[PASS]** `2025-12-12/reviews.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2025-12-12/reviews.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2025-12-12\reviews.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2025-12-12/neighbourhoods.csv` — file_exists: File tồn tại.
+- **[PASS]** `2025-12-12/neighbourhoods.csv` — required_columns: Đủ cột bắt buộc: ['neighbourhood']
+- **[INFO]** `2025-12-12/neighbourhoods.csv` — row_count: Đọc được 38 dòng.
+- **[WARNING]** `2025-12-12/neighbourhoods.csv` — missing_neighbourhood_group: Thiếu 38/38 (100.00%).
+- **[PASS]** `2025-12-12/neighbourhoods.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[PASS]** `2025-12-12/neighbourhoods.geojson` — file_exists: File tồn tại.
+- **[INFO]** `2025-12-12/neighbourhoods.geojson` — geojson_feature_count: Có 38 features.
+- **[PASS]** `2025-12-12/neighbourhoods.geojson` — geojson_features: Feature không hợp lệ: 0.
+- **[PASS]** `2025-12-12/neighbourhoods.geojson` — geojson_geometry: Feature thiếu geometry/tọa độ: 0.
+- **[PASS]** `2026-03-21/-` — snapshot_exists: Thư mục snapshot tồn tại.
+- **[PASS]** `2026-03-21/listings.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-03-21/listings.csv` — required_columns: Đủ cột bắt buộc: ['id', 'latitude', 'longitude']
+- **[INFO]** `2026-03-21/listings.csv` — row_count: Đọc được 13,563 dòng.
+- **[INFO]** `2026-03-21/listings.csv` — missing_description: Thiếu 157/13,563 (1.16%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_neighborhood_overview: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_profile_id: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_profile_url: Thiếu 4/13,563 (0.03%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_name: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_since: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_hosts_time_as_user_years: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_hosts_time_as_user_months: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_hosts_time_as_host_years: Thiếu 3/13,563 (0.02%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_hosts_time_as_host_months: Thiếu 3/13,563 (0.02%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_location: Thiếu 3,697/13,563 (27.26%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_about: Thiếu 5,422/13,563 (39.98%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_response_time: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_response_rate: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_acceptance_rate: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_is_superhost: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_thumbnail_url: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_picture_url: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_neighbourhood: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_listings_count: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_total_listings_count: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_verifications: Thiếu 13,563/13,563 (100.00%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_has_profile_pic: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_host_identity_verified: Thiếu 2/13,563 (0.01%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_neighbourhood: Thiếu 13,563/13,563 (100.00%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_neighbourhood_group_cleansed: Thiếu 13,563/13,563 (100.00%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_bathrooms: Thiếu 9/13,563 (0.07%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_bathrooms_text: Thiếu 10/13,563 (0.07%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_bedrooms: Thiếu 10/13,563 (0.07%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_beds: Thiếu 13/13,563 (0.10%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_price_quote_checkin_date: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_price_quote_checkout_date: Thiếu 2/13,563 (0.01%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_price_quote_total_price: Thiếu 81/13,563 (0.60%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_price_quote_price_per_night: Thiếu 81/13,563 (0.60%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_price_quote_raw: Thiếu 2/13,563 (0.01%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_minimum_nights: Thiếu 23/13,563 (0.17%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_maximum_nights: Thiếu 23/13,563 (0.17%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_minimum_minimum_nights: Thiếu 23/13,563 (0.17%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_maximum_minimum_nights: Thiếu 23/13,563 (0.17%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_minimum_maximum_nights: Thiếu 23/13,563 (0.17%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_maximum_maximum_nights: Thiếu 23/13,563 (0.17%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_calendar_updated: Thiếu 13,563/13,563 (100.00%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_has_availability: Thiếu 21/13,563 (0.15%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_estimated_revenue_l365d: Thiếu 79/13,563 (0.58%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_first_review: Thiếu 1,251/13,563 (9.22%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_last_review: Thiếu 1,251/13,563 (9.22%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_review_scores_rating: Thiếu 1,251/13,563 (9.22%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_review_scores_accuracy: Thiếu 1,254/13,563 (9.25%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_review_scores_cleanliness: Thiếu 1,254/13,563 (9.25%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_review_scores_checkin: Thiếu 1,254/13,563 (9.25%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_review_scores_communication: Thiếu 1,254/13,563 (9.25%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_review_scores_location: Thiếu 1,254/13,563 (9.25%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_review_scores_value: Thiếu 1,254/13,563 (9.25%).
+- **[INFO]** `2026-03-21/listings.csv` — missing_license: Thiếu 24/13,563 (0.18%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_instant_bookable: Thiếu 13,563/13,563 (100.00%).
+- **[WARNING]** `2026-03-21/listings.csv` — missing_reviews_per_month: Thiếu 1,251/13,563 (9.22%).
+- **[PASS]** `2026-03-21/listings.csv` — duplicate_ids: Không phát hiện ID trùng.
+- **[PASS]** `2026-03-21/listings.csv` — coordinates: Tọa độ thiếu/không đọc được: 0; ngoài phạm vi: 0.
+- **[WARNING]** `2026-03-21/listings.csv` — price_missing: Thiếu 79 giá.
+- **[INFO]** `2026-03-21/listings.csv` — price_iqr_outliers_sample: Mẫu tối đa 13,484 giá dương: ngưỡng IQR trên=958.53; 1,121 giá trong mẫu vượt ngưỡng. Không tự động xóa ngoại lai.
+- **[PASS]** `2026-03-21/listings.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2026-03-21/listings.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2026-03-21\listings.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2026-03-21/calendar.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-03-21/calendar.csv` — required_columns: Đủ cột bắt buộc: ['listing_id', 'date', 'available']
+- **[INFO]** `2026-03-21/calendar.csv` — row_count: Đọc được 4,950,495 dòng.
+- **[PASS]** `2026-03-21/calendar.csv` — invalid_dates: Không phát hiện ngày không hợp lệ.
+- **[PASS]** `2026-03-21/calendar.csv` — available_domain: Các giá trị available đều thuộc miền Boolean nhận diện được.
+- **[PASS]** `2026-03-21/calendar.csv` — duplicate_listing_date: Không phát hiện khóa (listing_id, date) trùng.
+- **[PASS]** `2026-03-21/calendar.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2026-03-21/calendar.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2026-03-21\calendar.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2026-03-21/reviews.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-03-21/reviews.csv` — required_columns: Đủ cột bắt buộc: ['listing_id', 'id', 'date', 'comments']
+- **[INFO]** `2026-03-21/reviews.csv` — row_count: Đọc được 649,874 dòng.
+- **[INFO]** `2026-03-21/reviews.csv` — missing_reviewer_name: Thiếu 1/649,874 (0.00%).
+- **[PASS]** `2026-03-21/reviews.csv` — duplicate_ids: Không phát hiện ID trùng.
+- **[PASS]** `2026-03-21/reviews.csv` — invalid_dates: Không phát hiện ngày không hợp lệ.
+- **[WARNING]** `2026-03-21/reviews.csv` — missing_comments: Có 95 review rỗng/thiếu nội dung.
+- **[INFO]** `2026-03-21/reviews.csv` — short_comments: Có 5,051 comments ngắn hơn 5 ký tự.
+- **[PASS]** `2026-03-21/reviews.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2026-03-21/reviews.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2026-03-21\reviews.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2026-03-21/neighbourhoods.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-03-21/neighbourhoods.csv` — required_columns: Đủ cột bắt buộc: ['neighbourhood']
+- **[INFO]** `2026-03-21/neighbourhoods.csv` — row_count: Đọc được 38 dòng.
+- **[WARNING]** `2026-03-21/neighbourhoods.csv` — missing_neighbourhood_group: Thiếu 38/38 (100.00%).
+- **[PASS]** `2026-03-21/neighbourhoods.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[PASS]** `2026-03-21/neighbourhoods.geojson` — file_exists: File tồn tại.
+- **[INFO]** `2026-03-21/neighbourhoods.geojson` — geojson_feature_count: Có 38 features.
+- **[PASS]** `2026-03-21/neighbourhoods.geojson` — geojson_features: Feature không hợp lệ: 0.
+- **[PASS]** `2026-03-21/neighbourhoods.geojson` — geojson_geometry: Feature thiếu geometry/tọa độ: 0.
+- **[PASS]** `2026-06-16/-` — snapshot_exists: Thư mục snapshot tồn tại.
+- **[PASS]** `2026-06-16/listings.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/listings.csv` — required_columns: Đủ cột bắt buộc: ['id', 'latitude', 'longitude']
+- **[INFO]** `2026-06-16/listings.csv` — row_count: Đọc được 20,573 dòng.
+- **[INFO]** `2026-06-16/listings.csv` — missing_description: Thiếu 330/20,573 (1.60%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_neighborhood_overview: Thiếu 20,573/20,573 (100.00%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_since: Thiếu 20,573/20,573 (100.00%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_location: Thiếu 5,823/20,573 (28.30%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_about: Thiếu 8,557/20,573 (41.59%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_response_time: Thiếu 20,573/20,573 (100.00%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_response_rate: Thiếu 20,573/20,573 (100.00%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_acceptance_rate: Thiếu 20,573/20,573 (100.00%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_thumbnail_url: Thiếu 20,573/20,573 (100.00%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_neighbourhood: Thiếu 20,573/20,573 (100.00%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_total_listings_count: Thiếu 20,573/20,573 (100.00%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_host_verifications: Thiếu 20,573/20,573 (100.00%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_neighbourhood: Thiếu 20,573/20,573 (100.00%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_neighbourhood_group_cleansed: Thiếu 20,573/20,573 (100.00%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_bathrooms: Thiếu 5,724/20,573 (27.82%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_bathrooms_text: Thiếu 25/20,573 (0.12%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_bedrooms: Thiếu 3,107/20,573 (15.10%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_beds: Thiếu 5,044/20,573 (24.52%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_price_quote_checkin_date: Thiếu 2,461/20,573 (11.96%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_price_quote_checkout_date: Thiếu 2,461/20,573 (11.96%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_price_quote_total_price: Thiếu 2,789/20,573 (13.56%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_price_quote_price_per_night: Thiếu 2,789/20,573 (13.56%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_price_quote_raw: Thiếu 2,461/20,573 (11.96%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_minimum_nights: Thiếu 8/20,573 (0.04%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_maximum_nights: Thiếu 8/20,573 (0.04%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_minimum_minimum_nights: Thiếu 8/20,573 (0.04%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_maximum_minimum_nights: Thiếu 8/20,573 (0.04%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_minimum_maximum_nights: Thiếu 8/20,573 (0.04%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_maximum_maximum_nights: Thiếu 8/20,573 (0.04%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_calendar_updated: Thiếu 20,573/20,573 (100.00%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_has_availability: Thiếu 80/20,573 (0.39%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_estimated_revenue_l365d: Thiếu 2,787/20,573 (13.55%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_first_review: Thiếu 3,326/20,573 (16.17%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_last_review: Thiếu 3,326/20,573 (16.17%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_review_scores_rating: Thiếu 3,326/20,573 (16.17%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_review_scores_accuracy: Thiếu 3,328/20,573 (16.18%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_review_scores_cleanliness: Thiếu 3,328/20,573 (16.18%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_review_scores_checkin: Thiếu 3,328/20,573 (16.18%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_review_scores_communication: Thiếu 3,328/20,573 (16.18%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_review_scores_location: Thiếu 3,328/20,573 (16.18%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_review_scores_value: Thiếu 3,328/20,573 (16.18%).
+- **[INFO]** `2026-06-16/listings.csv` — missing_license: Thiếu 1,269/20,573 (6.17%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_instant_bookable: Thiếu 20,573/20,573 (100.00%).
+- **[WARNING]** `2026-06-16/listings.csv` — missing_reviews_per_month: Thiếu 3,326/20,573 (16.17%).
+- **[PASS]** `2026-06-16/listings.csv` — duplicate_ids: Không phát hiện ID trùng.
+- **[PASS]** `2026-06-16/listings.csv` — coordinates: Tọa độ thiếu/không đọc được: 0; ngoài phạm vi: 0.
+- **[WARNING]** `2026-06-16/listings.csv` — price_missing: Thiếu 2,787 giá.
+- **[INFO]** `2026-06-16/listings.csv` — price_iqr_outliers_sample: Mẫu tối đa 17,786 giá dương: ngưỡng IQR trên=858.74; 1,435 giá trong mẫu vượt ngưỡng. Không tự động xóa ngoại lai.
+- **[PASS]** `2026-06-16/listings.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2026-06-16/listings.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2026-06-16\listings.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2026-06-16/calendar.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/calendar.csv` — required_columns: Đủ cột bắt buộc: ['listing_id', 'date', 'available']
+- **[INFO]** `2026-06-16/calendar.csv` — row_count: Đọc được 7,509,145 dòng.
+- **[PASS]** `2026-06-16/calendar.csv` — invalid_dates: Không phát hiện ngày không hợp lệ.
+- **[PASS]** `2026-06-16/calendar.csv` — available_domain: Các giá trị available đều thuộc miền Boolean nhận diện được.
+- **[PASS]** `2026-06-16/calendar.csv` — duplicate_listing_date: Không phát hiện khóa (listing_id, date) trùng.
+- **[PASS]** `2026-06-16/calendar.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2026-06-16/calendar.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2026-06-16\calendar.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2026-06-16/reviews.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/reviews.csv` — required_columns: Đủ cột bắt buộc: ['listing_id', 'id', 'date', 'comments']
+- **[INFO]** `2026-06-16/reviews.csv` — row_count: Đọc được 801,398 dòng.
+- **[INFO]** `2026-06-16/reviews.csv` — missing_reviewer_name: Thiếu 1/801,398 (0.00%).
+- **[PASS]** `2026-06-16/reviews.csv` — duplicate_ids: Không phát hiện ID trùng.
+- **[PASS]** `2026-06-16/reviews.csv` — invalid_dates: Không phát hiện ngày không hợp lệ.
+- **[WARNING]** `2026-06-16/reviews.csv` — missing_comments: Có 123 review rỗng/thiếu nội dung.
+- **[INFO]** `2026-06-16/reviews.csv` — short_comments: Có 6,286 comments ngắn hơn 5 ký tự.
+- **[PASS]** `2026-06-16/reviews.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[INFO]** `2026-06-16/reviews.csv` — cleaned_output: Đã ghi bản làm sạch vào data\processed\2026-06-16\reviews.csv; dữ liệu gốc được giữ nguyên.
+- **[PASS]** `2026-06-16/neighbourhoods.csv` — file_exists: File tồn tại.
+- **[PASS]** `2026-06-16/neighbourhoods.csv` — required_columns: Đủ cột bắt buộc: ['neighbourhood']
+- **[INFO]** `2026-06-16/neighbourhoods.csv` — row_count: Đọc được 38 dòng.
+- **[WARNING]** `2026-06-16/neighbourhoods.csv` — missing_neighbourhood_group: Thiếu 38/38 (100.00%).
+- **[PASS]** `2026-06-16/neighbourhoods.csv` — duplicate_rows_within_chunk: Không phát hiện dòng trùng hoàn toàn trong cùng chunk; kiểm tra trùng hoàn chỉnh xuyên chunk chưa được thực hiện.
+- **[PASS]** `2026-06-16/neighbourhoods.geojson` — file_exists: File tồn tại.
+- **[INFO]** `2026-06-16/neighbourhoods.geojson` — geojson_feature_count: Có 38 features.
+- **[PASS]** `2026-06-16/neighbourhoods.geojson` — geojson_features: Feature không hợp lệ: 0.
+- **[PASS]** `2026-06-16/neighbourhoods.geojson` — geojson_geometry: Feature thiếu geometry/tọa độ: 0.
