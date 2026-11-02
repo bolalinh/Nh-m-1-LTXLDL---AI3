@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import json
@@ -383,16 +382,16 @@ def write_reports(report, output_dir):
     output_dir.mkdir(parents=True, exist_ok=True)
     summary = {level: sum(x["level"] == level for x in report) for level in LEVELS}
     result = {"generated_at": datetime.now().isoformat(timespec="seconds"), "summary": summary, "checks": report}
-    (output_dir / "qa_report.json").write_text(json.dumps(result, ensure_ascii=False, indent=2), encoding="utf-8")
-    lines = ["# Data Quality Report", "", f"- Generated at: {result['generated_at']}", "", "## Summary", ""]
-    lines.extend(f"- **{level}:** {count}" for level, count in summary.items())
-    lines.extend(["", "## Details", ""])
-    lines.extend(f"- **[{x['level']}]** `{x['snapshot']}/{x['file']}` — {x['check']}: {x['message']}" for x in report)
-    (output_dir / "qa_report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+    # Chỉ xuất một file CSV duy nhất cho báo cáo QA.
+    csv_path = output_dir / "qa_report.csv"
+    df = pd.DataFrame(report, columns=["level", "snapshot", "file", "check", "message"])
+    df.to_csv(csv_path, index=False, encoding="utf-8")
+
     print("\n=== QA SUMMARY ===")
     for level, count in summary.items():
         print(f"{level}: {count}")
-    print(f"\nReports saved to: {output_dir}")
+    print(f"\nReport saved to: {csv_path}")
 
 
 def run_qa(config_path=DEFAULT_CONFIG, clean=True):

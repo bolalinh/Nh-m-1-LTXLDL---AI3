@@ -19,7 +19,7 @@ Dự án sử dụng mô hình LLM theo chuẩn OpenAI-compatible API, tức là
 
 Cấu hình mặc định hiện tại:
 
-- model: `gpt-4o-mini`
+- model: `gemini-3.5-flash-lite`
 - biến môi trường bắt buộc:
   - `OPENAI_API_KEY` hoặc `LLM_API_KEY`
 - biến môi trường tùy chọn:
@@ -31,7 +31,7 @@ Ví dụ cấu hình .env:
 
 ```env
 OPENAI_API_KEY=your_api_key_here
-OPENAI_MODEL=gpt-4o-mini
+OPENAI_MODEL=gemini-3.5-flash-lite
 OPENAI_BASE_URL=https://api.openai.com/v1
 ```
 
@@ -127,7 +127,7 @@ Việc dùng LLM có chi phí phụ thuộc vào số lượng review và số t
 Trong dự án, chi phí được ước tính theo công thức:
 
 - chi phí = chi phí input + chi phí output
-- với gpt-4o-mini, ước tính tham khảo:
+- với gemini-3.5-flash-lite, ước tính tham khảo:
   - input: $0.15 / 1M tokens
   - output: $0.60 / 1M tokens
 
@@ -145,7 +145,7 @@ estimated_cost = (
 - sampling theo nhóm (uniform-group sampling)
 - giới hạn `max_total`
 - chỉ phân tích một tập mẫu đại diện thay vì toàn bộ review của thành phố
-- ưu tiên model nhỏ hơn như `gpt-4o-mini` khi cần tối ưu chi phí
+- ưu tiên model nhỏ hơn như `gemini-3.5-flash-lite` khi cần tối ưu chi phí
 
 ---
 
