@@ -1,0 +1,13 @@
+# ============================================================
+# requirements.txt – Ghim chặt phiên bản thư viện (Bài 1, Bài 6, Đề bài)
+# ============================================================
+pandas==2.2.2
+numpy==1.26.4
+pyyaml==6.0.1
+matplotlib==3.8.4
+seaborn==0.13.2
+scikit-learn==1.4.2
+pydantic==2.7.1
+google-genai==0.1.1
+google-generativeai==0.8.2
+requests==2.31.0

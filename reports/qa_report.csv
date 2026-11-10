@@ -1,0 +1,34 @@
+rule,condition,reason,action,rows_before,rows_after,rows_affected,snapshot
+QA-00: Chuẩn hoá giá theo mốc cuối cùng (Latest Snapshot Price),Áp dụng bảng giá mốc 2026-06-16 cho mốc 2025-09-12,Quy định phân tích: chỉ dùng giá của mốc cuối cùng để đảm bảo tính nhất quán,GHI ĐÈ GIÁ THEO MỐC CUỐI,17730,17730,17730,2025-09-12
+QA-00: Chuẩn hoá giá theo mốc cuối cùng (Latest Snapshot Price),Áp dụng bảng giá mốc 2026-06-16 cho mốc 2025-12-12,Quy định phân tích: chỉ dùng giá của mốc cuối cùng để đảm bảo tính nhất quán,GHI ĐÈ GIÁ THEO MỐC CUỐI,20436,20436,20436,2025-12-12
+QA-00: Chuẩn hoá giá theo mốc cuối cùng (Latest Snapshot Price),Áp dụng bảng giá mốc 2026-06-16 cho mốc 2026-03-21,Quy định phân tích: chỉ dùng giá của mốc cuối cùng để đảm bảo tính nhất quán,GHI ĐÈ GIÁ THEO MỐC CUỐI,13563,13563,13563,2026-03-21
+QA-00: Chuẩn hoá giá theo mốc cuối cùng (Latest Snapshot Price),Áp dụng bảng giá mốc 2026-06-16 cho mốc 2026-06-16,Quy định phân tích: chỉ dùng giá của mốc cuối cùng để đảm bảo tính nhất quán,GHI ĐÈ GIÁ THEO MỐC CUỐI,20573,20573,20573,2026-06-16
+QA-01: Thiếu cột khoá định danh,"NaN trong ['id', 'host_id']",Không thể định danh listing nếu thiếu id/host_id,XOÁ,17730,17730,0,2025-09-12
+QA-04: Trùng lặp trong mốc,"duplicated(['id', 'last_scraped'])",Cùng bản ghi xuất hiện nhiều lần → giữ 1,XOÁ,17730,17730,0,2025-09-12
+QA-02: Giá ngoại lai,price < 10 hoặc > 10000 AUD,Giá quá thấp = lỗi nhập; quá cao = ngoại lai,GẮN CỜ,17730,17730,35,2025-09-12
+QA-03: minimum_nights bất thường,minimum_nights > 365,Listing có thể bị ẩn hoặc nhập sai,GẮN CỜ,17730,17730,3,2025-09-12
+QA-06: Danh mục room_type lệch,"room_type ∉ {'Private room', 'Entire home/apt', 'Hotel room', 'Shared room'}",Giá trị không nằm trong 4 loại chính thức,GẮN CỜ,17730,17730,0,2025-09-12
+QA-07: Thống kê tỷ lệ thiếu,isna() trên các cột quan trọng,Ghi nhận để quyết định chiến lược điền giá trị,GHI NHẬN: price: 0.02%; review_scores_rating: 15.28%; bedrooms: 20.71%; beds: 100.0%; host_response_rate: 18.85%; reviews_per_month: 15.28%,17730,17730,30167,2025-09-12
+QA-08: Điền giá trị thiếu (median theo room_type),NaN trong cột số quan trọng,Median theo nhóm chính xác hơn mean toàn bộ,ĐIỀN GIÁ TRỊ,17730,17730,9091,2025-09-12
+QA-01: Thiếu cột khoá định danh,"NaN trong ['id', 'host_id']",Không thể định danh listing nếu thiếu id/host_id,XOÁ,20436,20436,0,2025-12-12
+QA-04: Trùng lặp trong mốc,"duplicated(['id', 'last_scraped'])",Cùng bản ghi xuất hiện nhiều lần → giữ 1,XOÁ,20436,20436,0,2025-12-12
+QA-02: Giá ngoại lai,price < 10 hoặc > 10000 AUD,Giá quá thấp = lỗi nhập; quá cao = ngoại lai,GẮN CỜ,20436,20436,35,2025-12-12
+QA-03: minimum_nights bất thường,minimum_nights > 365,Listing có thể bị ẩn hoặc nhập sai,GẮN CỜ,20436,20436,1,2025-12-12
+QA-06: Danh mục room_type lệch,"room_type ∉ {'Private room', 'Entire home/apt', 'Hotel room', 'Shared room'}",Giá trị không nằm trong 4 loại chính thức,GẮN CỜ,20436,20436,0,2025-12-12
+QA-07: Thống kê tỷ lệ thiếu,isna() trên các cột quan trọng,Ghi nhận để quyết định chiến lược điền giá trị,GHI NHẬN: price: 0.02%; review_scores_rating: 20.4%; bedrooms: 2.29%; beds: 12.89%; host_response_rate: 15.39%; reviews_per_month: 20.4%,20436,20436,14591,2025-12-12
+QA-08: Điền giá trị thiếu (median theo room_type),NaN trong cột số quan trọng,Median theo nhóm chính xác hơn mean toàn bộ,ĐIỀN GIÁ TRỊ,20436,20436,11441,2025-12-12
+QA-01: Thiếu cột khoá định danh,"NaN trong ['id', 'host_id']",Không thể định danh listing nếu thiếu id/host_id,XOÁ,13563,13563,0,2026-03-21
+QA-04: Trùng lặp trong mốc,"duplicated(['id', 'last_scraped'])",Cùng bản ghi xuất hiện nhiều lần → giữ 1,XOÁ,13563,13563,0,2026-03-21
+QA-02: Giá ngoại lai,price < 10 hoặc > 10000 AUD,Giá quá thấp = lỗi nhập; quá cao = ngoại lai,GẮN CỜ,13563,13563,13,2026-03-21
+QA-03: minimum_nights bất thường,minimum_nights > 365,Listing có thể bị ẩn hoặc nhập sai,GẮN CỜ,13563,13563,0,2026-03-21
+QA-06: Danh mục room_type lệch,"room_type ∉ {'Private room', 'Entire home/apt', 'Hotel room', 'Shared room'}",Giá trị không nằm trong 4 loại chính thức,GẮN CỜ,13563,13563,0,2026-03-21
+QA-07: Thống kê tỷ lệ thiếu,isna() trên các cột quan trọng,Ghi nhận để quyết định chiến lược điền giá trị,GHI NHẬN: price: 0.02%; review_scores_rating: 9.22%; bedrooms: 0.07%; beds: 0.1%; host_response_rate: 100.0%; reviews_per_month: 9.22%,13563,13563,16091,2026-03-21
+QA-08: Điền giá trị thiếu (median theo room_type),NaN trong cột số quan trọng,Median theo nhóm chính xác hơn mean toàn bộ,ĐIỀN GIÁ TRỊ,13563,13563,2525,2026-03-21
+QA-01: Thiếu cột khoá định danh,"NaN trong ['id', 'host_id']",Không thể định danh listing nếu thiếu id/host_id,XOÁ,20573,20573,0,2026-06-16
+QA-04: Trùng lặp trong mốc,"duplicated(['id', 'last_scraped'])",Cùng bản ghi xuất hiện nhiều lần → giữ 1,XOÁ,20573,20573,0,2026-06-16
+QA-02: Giá ngoại lai,price < 10 hoặc > 10000 AUD,Giá quá thấp = lỗi nhập; quá cao = ngoại lai,GẮN CỜ,20573,20573,37,2026-06-16
+QA-03: minimum_nights bất thường,minimum_nights > 365,Listing có thể bị ẩn hoặc nhập sai,GẮN CỜ,20573,20573,1,2026-06-16
+QA-06: Danh mục room_type lệch,"room_type ∉ {'Private room', 'Entire home/apt', 'Hotel room', 'Shared room'}",Giá trị không nằm trong 4 loại chính thức,GẮN CỜ,20573,20573,0,2026-06-16
+QA-07: Thống kê tỷ lệ thiếu,isna() trên các cột quan trọng,Ghi nhận để quyết định chiến lược điền giá trị,GHI NHẬN: price: 0.02%; review_scores_rating: 16.17%; bedrooms: 15.1%; beds: 24.52%; host_response_rate: 100.0%; reviews_per_month: 16.17%,20573,20573,35380,2026-06-16
+QA-08: Điền giá trị thiếu (median theo room_type),NaN trong cột số quan trọng,Median theo nhóm chính xác hơn mean toàn bộ,ĐIỀN GIÁ TRỊ,20573,20573,14803,2026-06-16
+QA-05: Trùng ID giữa các mốc,Cùng id xuất hiện ở ≥2 mốc,Bình thường – listing tồn tại qua nhiều quý,GHI NHẬN (không xoá),72302,72302,20669,all

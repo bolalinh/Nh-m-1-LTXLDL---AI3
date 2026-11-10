@@ -1,0 +1,113 @@
+# ============================================================
+# configs/sydney.yaml
+# ============================================================
+# Tệp cấu hình cho thành phố Sydney.
+# Mọi tham số (thành phố, mốc chụp, ngưỡng QA, KPI, LLM)
+# đều nằm ở đây → không ghi cứng trong mã nguồn.
+# Giảng viên chỉ cần sửa file này để chạy trên mốc khác.
+# ============================================================
+
+city: sydney
+data_root: australia/nsw/sydney      # dựng URL: data.insideairbnb.com/<data_root>/<mốc>/...
+currency: AUD
+snapshots:
+  - "2025-09-12"
+  - "2025-12-12"
+  - "2026-03-21"
+  - "2026-06-16"
+
+# Chính sách giá: Chỉ sử dụng bảng giá của mốc chụp cuối cùng (2026-06-16)
+price_policy:
+  mode: latest_snapshot_only
+  reference_snapshot: "2026-06-16"
+
+# ---------- QA ----------
+qa:
+  price_min: 10                # AUD – dưới ngưỡng này coi là lỗi/spam
+  price_max: 10000             # AUD – trên ngưỡng này coi là ngoại lai
+  min_nights_cap: 365          # minimum_nights > giá trị này → bất thường
+  max_nights_cap: 1125         # maximum_nights > giá trị này → bất thường
+  dedupe_keys:                 # cột dùng để phát hiện trùng lặp
+    - id
+    - last_scraped
+  required_cols:               # cột bắt buộc phải có
+    - id
+    - name
+    - host_id
+    - neighbourhood_cleansed
+    - latitude
+    - longitude
+    - price
+    - room_type
+    - minimum_nights
+    - number_of_reviews
+    - availability_365
+
+# ---------- KPI ----------
+kpi:
+  area_col: neighbourhood_cleansed
+  # Bên đặt hàng: CHỦ NHÀ AIRBNB
+  # → KPI tập trung vào: doanh thu, tỷ lệ lấp đầy, đánh giá, giá cả
+  metrics:
+    - name: median_price_per_night
+      description: "Giá trung vị mỗi đêm (AUD)"
+      formula: "median(price)"
+      unit: AUD
+    - name: occupancy_rate
+      description: "Tỷ lệ lấp đầy ước tính"
+      formula: "1 - (availability_365 / 365)"
+      unit: "%"
+    - name: estimated_monthly_revenue
+      description: "Doanh thu hàng tháng ước tính"
+      formula: "price × (30 × occupancy_rate)"
+      unit: AUD
+    - name: review_score_avg
+      description: "Điểm đánh giá trung bình"
+      formula: "mean(review_scores_rating)"
+      unit: "điểm"
+    - name: response_rate
+      description: "Tỷ lệ phản hồi của chủ nhà"
+      formula: "mean(host_response_rate)"
+      unit: "%"
+    - name: superhost_ratio
+      description: "Tỷ lệ Superhost"
+      formula: "count(host_is_superhost=t) / count(*)"
+      unit: "%"
+    - name: sentiment_positive_ratio
+      description: "Tỷ lệ đánh giá tích cực (từ LLM)"
+      formula: "count(sentiment=positive) / count(*)"
+      unit: "%"
+    - name: top_complaint_aspects
+      description: "Khía cạnh bị phàn nàn nhiều nhất (từ LLM)"
+      formula: "mode(negative_aspects)"
+      unit: "danh mục"
+
+# ---------- LLM ----------
+llm:
+  provider: gemini
+  model: gemini-2.0-flash       # model nhanh, miễn phí
+  sample_size: 3000              # cỡ mẫu reviews để gửi LLM
+  sampling_method: stratified    # lấy mẫu phân tầng theo neighbourhood
+  aspects:
+    - vị trí
+    - sạch sẽ
+    - chủ nhà
+    - giá trị
+    - tiện nghi
+    - độ ồn
+    - an toàn
+    - giao thông
+  cache: data/processed/llm_cache.jsonl
+  batch_size: 5                  # số reviews mỗi lần gọi API
+  max_retries: 3
+  temperature: 0.0               # output ổn định, không random
+
+# ---------- Baseline ----------
+baseline:
+  method: lexicon                # phương pháp đối chứng: từ điển cảm xúc
+  min_manual_labels: 100         # số nhãn tay tối thiểu
+
+# ---------- Misc ----------
+seed: 42
+figures_dir: figures
+reports_dir: reports

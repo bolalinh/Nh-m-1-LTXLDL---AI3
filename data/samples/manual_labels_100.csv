@@ -1,0 +1,101 @@
+review_id,comments,true_sentiment,true_aspects_positive,true_aspects_negative,true_language
+1001,The apartment was sparkling clean and right next to Bondi Beach! Host was super friendly.,positive,vị trí;sạch sẽ;chủ nhà,,en
+1002,Great value for money in Sydney CBD. Comfortable bed and reliable fast wifi.,positive,vị trí;giá trị;tiện nghi,,en
+1003,"Amazing views of the Harbour Bridge. Everything was perfect, couldn't ask for more.",positive,vị trí,,en
+1004,"Quiet neighbourhood, peaceful sleep and very welcoming host. Highly recommended!",positive,độ ồn;chủ nhà,,en
+1005,"Spacious room, clean bathroom, great kitchen amenities. We had a lovely stay.",positive,sạch sẽ;tiện nghi,,en
+1006,"Phòng rất sạch sẽ, chủ nhà người Việt nhiệt tình hướng dẫn đi lại ở Sydney.",positive,sạch sẽ;chủ nhà,,vi
+1007,"Căn hộ gần ga tàu điện, đi lại siêu tiện, view ngắm biển tuyệt vời.",positive,vị trí,,vi
+1008,L'appartement est très propre et bien situé près de l'opéra. Merci beaucoup!,positive,vị trí;sạch sẽ,,fr
+1009,房东非常热情，房间干净整洁，离地铁站只有五分钟路程，强烈推荐！,positive,vị trí;sạch sẽ;chủ nhà,,zh
+1010,Super easy check-in process. Safe building with 24/7 security. Felt very secure.,positive,chủ nhà;an toàn,,en
+1011,Super cozy and spotless clean! Would definitely book again next time.,positive,sạch sẽ,,en
+1012,Loved the pool and the gym. Air conditioning was a lifesaver during Sydney summer.,positive,tiện nghi,,en
+1013,Outstanding hospitality from Michael. Fresh fruits and coffee provided on arrival.,positive,chủ nhà;tiện nghi,,en
+1014,Excellent public transport links nearby. Ferry wharf is just a 3-minute stroll.,positive,vị trí,,en
+1015,Very affordable price considering the prime location in Surry Hills.,positive,vị trí;giá trị,,en
+1016,"Flawless stay. Clean towels, hot shower, and super comfy bed.",positive,sạch sẽ;tiện nghi,,en
+1017,Safe and quiet area for families. Kids loved the nearby park.,positive,độ ồn;an toàn,,en
+1018,"Unbeatable location, walk to everywhere in Darling Harbour.",positive,vị trí,,en
+1019,Host responded to all our messages within 5 minutes. Top notch communication.,positive,chủ nhà,,en
+1020,Casa muy limpia y acogedora cerca de la playa de Manly. Nos encantó.,positive,vị trí;sạch sẽ,,es
+1021,Such a charming terrace house. Clean and stylish interior decoration.,positive,sạch sẽ,,en
+1022,Fast wifi which allowed me to work remotely without any hiccups.,positive,tiện nghi,,en
+1023,"Host allowed early check-in without extra charge, extremely thoughtful!",positive,chủ nhà;giá trị,,en
+1024,Spotless sheets and pleasant fragrance throughout the whole house.,positive,sạch sẽ,,en
+1025,Great dining options right outside the doorstep. Ideal location for foodies.,positive,vị trí,,en
+1026,Terrible experience. The apartment was filthy and smelled like damp cigarettes.,negative,,sạch sẽ,en
+1027,Extremely noisy all night due to continuous heavy road construction outside.,negative,,độ ồn,en
+1028,Host was very rude and unresponsive when the toilet overflowed. Disgusting.,negative,,sạch sẽ;chủ nhà,en
+1029,Overpriced for a tiny room with broken air conditioning in boiling heat.,negative,,giá trị;tiện nghi,en
+1030,Cockroaches in the kitchen and dirty bed sheets! Demand a full refund.,negative,,sạch sẽ,en
+1031,The lock on the front door was completely broken. Felt totally unsafe.,negative,,an toàn,en
+1032,"Phòng bẩn thỉu, đầy bụi và mùi ẩm mốc, chủ nhà không thèm trả lời tin nhắn.",negative,,sạch sẽ;chủ nhà,vi
+1033,"Tiếng ồn xe cộ thâu đêm không thể nào ngủ được, cách âm quá tệ.",negative,,độ ồn,vi
+1034,Wifi did not work for the entire 4 days. Host promised to fix but never did.,negative,,tiện nghi;chủ nhà,en
+1035,"Very dark alley at night, suspicious people hanging outside. Did not feel safe.",negative,,an toàn,en
+1036,Listing stated whole apartment but it was a partitioned living room. Complete scam.,negative,,chủ nhà;giá trị,en
+1037,No hot water in the middle of winter. Freezing showers every morning.,negative,,tiện nghi,en
+1038,Worst Airbnb I have ever stayed in. Dirty bathroom with mold everywhere.,negative,,sạch sẽ,en
+1039,Far away from public transport. Had to spend 50 dollars on Uber every single trip.,negative,,vị trí;giá trị,en
+1040,Très bruyant et lit inconfortable. Nous n'avons pas pu dormir de la nuit.,negative,,tiện nghi;độ ồn,fr
+1041,房东态度恶劣，房间有蟑螂，热水器还是坏的，体验极差！,negative,,sạch sẽ;chủ nhà;tiện nghi,zh
+1042,Check-in was a nightmare. Waited 3 hours in the rain for the key box code.,negative,,chủ nhà,en
+1043,Huge price for low quality accommodation. Stained carpets and old furniture.,negative,,sạch sẽ;giá trị,en
+1044,Music booming from the bar downstairs until 3 AM every single night.,negative,,độ ồn,en
+1045,No towels provided despite listing showing essentials included. Unhelpful host.,negative,,chủ nhà;tiện nghi,en
+1046,Dirty fridge full of expired rotten food from previous guests.,negative,,sạch sẽ,en
+1047,AC broke down during a 40 degree heatwave. Completely unlivable.,negative,,tiện nghi,en
+1048,Windows cannot be locked on the ground floor. Severe security risk.,negative,,an toàn,en
+1049,El anfitrión nunca apareció y nos dejó esperando afuera por horas.,negative,,chủ nhà,es
+1050,Photos on the profile must be from 10 years ago. Dilapidated and neglected place.,negative,,chủ nhà;giá trị,en
+1051,"The location right next to Circular Quay was amazing, but the street was so noisy at night.",mixed,vị trí,độ ồn,en
+1052,"Host was very helpful and responsive, however the bathroom was not properly cleaned.",mixed,chủ nhà,sạch sẽ,en
+1053,"Spectacular ocean views and great balcony, but the wifi was terribly slow.",mixed,vị trí;tiện nghi,tiện nghi,en
+1054,"Great affordable price for Sydney, but the bed mattress was really stiff and gave me back pain.",mixed,giá trị,tiện nghi,en
+1055,"Vị trí rất đẹp và thuận tiện, nhưng nhà hơi cũ và cách âm không tốt.",mixed,vị trí,độ ồn,vi
+1056,"Chủ nhà siêu nhiệt tình hỗ trợ, tiếc là điều hoà bị hỏng vào ngày nóng nhất.",mixed,chủ nhà,tiện nghi,vi
+1057,"L'emplacement est idéal au centre-ville, mais le ménage laissait franchement à désirer.",mixed,vị trí,sạch sẽ,fr
+1058,位置极佳，就在唐人街旁边，但是楼下施工非常吵，早上七点就被吵醒了。,mixed,vị trí,độ ồn,zh
+1059,"Lovely clean place with great amenities, but parking was an absolute headache.",mixed,sạch sẽ;tiện nghi,tiện nghi,en
+1060,"Very cheap room, but you get what you pay for: tiny space and shared dirty toilet.",mixed,giá trị,sạch sẽ,en
+1061,"Fantastic host who baked us cookies, but the apartment was freezing cold at night.",mixed,chủ nhà,tiện nghi,en
+1062,Walking distance to Opera House. Unfortunately there was ongoing construction right next door.,mixed,vị trí,độ ồn,en
+1063,"Clean and comfortable beds, but check-in instructions were confusing and caused delay.",mixed,sạch sẽ;tiện nghi,chủ nhà,en
+1064,"Gorgeous harbour view, though a bit overpriced compared to similar places.",mixed,vị trí,giá trị,en
+1065,"Spacious living area and modern kitchen, but we spotted a couple of cockroaches in the hallway.",mixed,tiện nghi,sạch sẽ,en
+1066,"Host gave fantastic local recommendations, but the shower water pressure was very weak.",mixed,chủ nhà,tiện nghi,en
+1067,"Central location close to Central Station, but the area feels a bit sketchy after dark.",mixed,vị trí,an toàn,en
+1068,"Good value for budget travelers, however the neighborhood gets loud over the weekend.",mixed,giá trị,độ ồn,en
+1069,"House was spotless, but the steep flight of stairs with heavy luggage was exhausting.",mixed,sạch sẽ,tiện nghi,en
+1070,"Friendly roommate and quiet room, but the kitchen was rather greasy.",mixed,chủ nhà;độ ồn,sạch sẽ,en
+1071,"Amazing rooftop pool, but the elevator broke down so we had to climb 12 floors.",mixed,tiện nghi,tiện nghi,en
+1072,"Excellent communication with owner, but the aircon kept leaking water on the floor.",mixed,chủ nhà,tiện nghi,en
+1073,"Great location near Bondi, but finding street parking took us an hour every evening.",mixed,vị trí,tiện nghi,en
+1074,"Nice modern decor, but the pillows smelled a bit like old sweat.",mixed,tiện nghi,sạch sẽ,en
+1075,"Very affordable for students, but definitely needs a deep clean before the next guest.",mixed,giá trị,sạch sẽ,en
+1076,"Oh wonderful, if you enjoy sleeping in a freezer with non-stop techno music until dawn!",negative,,tiện nghi;độ ồn,en
+1077,Great place if you are a fan of dust bunnies and unwashed linen.,negative,,sạch sẽ,en
+1078,"Five stars for the view, zero stars for the hygiene in the kitchen.",mixed,vị trí,sạch sẽ,en
+1079,Safe and sound. Felt like home away from home.,positive,an toàn,,en
+1080,"Just average. Nothing special, nothing terrible. Decent bed and standard amenities.",mixed,tiện nghi,,en
+1081,Cleanliness is 10/10. Host was responsive and helpful throughout our week-long stay.,positive,sạch sẽ;chủ nhà,,en
+1082,Unbearable noise from pub below. Do not stay here if you plan on sleeping.,negative,,độ ồn,en
+1083,Super safe area with secure intercom and digital locks. Very reassuring for solo female traveler.,positive,an toàn,,en
+1084,"Great price point for Sydney, perfect for backpackers on a strict budget.",positive,giá trị,,en
+1085,"The view is unbelievable, right on the water. Would pay double to come back.",positive,vị trí;giá trị,,en
+1086,Not worth the money at all. Hidden cleaning fees made it outrageously expensive.,negative,,giá trị,en
+1087,Host was nowhere to be found. Had to call Airbnb emergency line to cancel.,negative,,chủ nhà,en
+1088,Bedsheets had visible yellow stains. Thoroughly disappointed with cleanliness.,negative,,sạch sẽ,en
+1089,Excellent aircon and very quiet at night. Slept like a baby.,positive,tiện nghi;độ ồn,,en
+1090,"Close to tram and ferry, but the room itself was smaller than pictured.",mixed,vị trí,tiện nghi,en
+1091,"Căn phòng ngập tràn ánh sáng tự nhiên, vị trí tuyệt vời sát biển Manly.",positive,vị trí;tiện nghi,,vi
+1092,"Giá quá đắt so với chất lượng, điều hoà hỏng mà chủ nhà không bồi thường.",negative,,giá trị;tiện nghi;chủ nhà,vi
+1093,房间就在悉尼大学对面，去学校非常方便，房东还准备了水果和小点心。,positive,vị trí;chủ nhà;tiện nghi,,zh
+1094,卫生间下水道堵塞，味道很难闻，跟房东反映后也没有人来修。,negative,,sạch sẽ;chủ nhà;tiện nghi,zh
+1095,Bel appartement avec cuisine bien équipée. Quartier très calme et sécurisé.,positive,tiện nghi;độ ồn;an toàn,,fr
+1096,El internet no funcionó durante toda la estancia. Muy frustrante para trabajar.,negative,,tiện nghi,es
+1097,Host provided great suggestions for coastal walks and cafes. Super welcoming vibe.,positive,chủ nhà,,en
+1098,Everything was clean and organized. Great value in an expensive city.,positive,sạch sẽ;giá trị,,en
+1099,"Noisy street, small shower, but the host was truly lovely and tried their best.",mixed,chủ nhà,độ ồn;tiện nghi,en
+1100,"Prime location, sparkling clean, fast internet and silent aircon. 100% recommended!",positive,vị trí;sạch sẽ;tiện nghi;độ ồn,,en

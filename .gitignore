@@ -1,0 +1,27 @@
+# ============================================================
+# .gitignore – Theo yêu cầu đề bài
+# ============================================================
+
+# Dữ liệu thô (cấm commit dữ liệu thô > hàng trăm MB)
+data/raw/
+*.csv.gz
+
+# Môi trường ảo & Cache Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Bí mật & Khoá bảo mật
+.env
+*.pem
+*.key
+
+# File hệ điều hành & IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp
