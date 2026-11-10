@@ -35,6 +35,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from src.logger import measure_execution_time
+
 logger = logging.getLogger(__name__)
 
 
@@ -149,6 +151,7 @@ def compute_room_type_kpis(df: pd.DataFrame) -> pd.DataFrame:
     return grouped.sort_values(by="median_revenue", ascending=False)
 
 
+@measure_execution_time(label="compute_all_kpis")
 def compute_all_kpis(cleaned_snapshots: dict, cfg: dict) -> dict:
     """Hàm trung tâm điều phối việc tính toàn bộ KPI qua các mốc thời gian.
     

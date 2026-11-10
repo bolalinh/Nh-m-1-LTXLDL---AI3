@@ -37,7 +37,7 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
-from src.logger import setup_logging
+from src.logger import PipelineLogger, setup_logging
 
 
 def load_config(config_path: str) -> dict:
@@ -59,8 +59,8 @@ def main():
     parser.add_argument("--log-file", type=str, default="log.txt", help="Tên file nhật ký (mặc định: log.txt)")
     args = parser.parse_args()
 
-    # Khởi tạo logging qua module độc lập src.logger
-    logger = setup_logging(args.log_file)
+    # Khởi tạo logging qua module độc lập src.logger theo chuẩn UET
+    logger = PipelineLogger.setup(args.log_file)
 
     start_total_time = time.time()
     cfg = load_config(args.config)

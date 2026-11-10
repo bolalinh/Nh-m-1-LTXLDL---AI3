@@ -27,6 +27,8 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
+from src.logger import measure_execution_time
+
 logger = logging.getLogger(__name__)
 
 # Thiết lập phong cách hiển thị chuẩn mực khoa học
@@ -118,7 +120,7 @@ def plot_superhost_price_comparison(latest_df: pd.DataFrame, output_dir: Path) -
     - Áp dụng kỹ thuật Bài 13: Seaborn Boxplot loại bỏ outlier cực đoan để nhìn rõ hộp phân vị.
     """
     df_plot = latest_df[latest_df["price"].between(10, 1500)].copy()
-    df_plot["host_type"] = df_plot["is_superhost"].map({True: "Superhost ⭐", False: "Host thông thường"})
+    df_plot["host_type"] = df_plot["is_superhost"].map({True: "Superhost", False: "Host thông thường"})
 
     fig, ax = plt.subplots(figsize=(10, 6))
     order_rooms = ["Entire home/apt", "Private room", "Shared room"]
@@ -130,7 +132,7 @@ def plot_superhost_price_comparison(latest_df: pd.DataFrame, output_dir: Path) -
         y="price",
         hue="host_type",
         order=existing_rooms,
-        palette=["#e7298a", "#7570b3"],
+        palette={"Superhost": "#e7298a", "Host thông thường": "#7570b3"},
         showfliers=False,  # Ẩn ngoại lai cực đoan theo Bài 13 để tập trung vào hộp IQR
         ax=ax
     )
@@ -186,6 +188,7 @@ def plot_llm_complaints_distribution(llm_results_df: pd.DataFrame, output_dir: P
     return out_file
 
 
+@measure_execution_time(label="generate_all_visualizations")
 def generate_all_visualizations(
     kpi_dict: dict,
     llm_results_df: pd.DataFrame,

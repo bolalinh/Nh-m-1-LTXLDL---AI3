@@ -33,6 +33,8 @@ from typing import Dict, List, Optional, Any
 import pandas as pd
 from pydantic import BaseModel, Field
 
+from src.logger import measure_execution_time
+
 logger = logging.getLogger(__name__)
 
 
@@ -166,6 +168,7 @@ def get_gemini_client():
 # LẤY MẪU & XỬ LÝ TOÀN BỘ MẪU
 # ══════════════════════════════════════════════════════════════
 
+@measure_execution_time(label="sample_reviews_stratified")
 def sample_reviews_stratified(reviews_df: pd.DataFrame, listings_df: pd.DataFrame, sample_size: int = 3000, seed: int = 42) -> pd.DataFrame:
     """Lấy mẫu phân tầng (Stratified Sampling) theo khu vực (neighbourhood).
     
@@ -224,6 +227,7 @@ def estimate_total_sydney_cost(total_reviews_count: int, avg_words_per_review: f
     }
 
 
+@measure_execution_time(label="process_reviews_with_llm")
 def process_reviews_with_llm(
     reviews_sample: pd.DataFrame,
     cfg: dict,

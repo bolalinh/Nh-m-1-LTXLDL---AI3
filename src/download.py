@@ -30,6 +30,8 @@ import requests
 import pandas as pd
 import yaml
 
+from src.logger import measure_execution_time
+
 logger = logging.getLogger(__name__)
 
 # Danh sách các file cần tải cho mỗi mốc chụp
@@ -157,6 +159,7 @@ def download_snapshot(data_root: str, snapshot: str, raw_dir: Path) -> dict:
     return paths
 
 
+@measure_execution_time(label="download_all")
 def download_all(cfg: dict) -> dict:
     """Tải dữ liệu cho TẤT CẢ các mốc chụp trong config.
 

@@ -34,6 +34,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from src.logger import measure_execution_time
+
 logger = logging.getLogger(__name__)
 
 
@@ -48,12 +50,14 @@ def parse_price(series: pd.Series) -> pd.Series:
     → Vectorized string ops nhanh hơn gấp 10-100x so với apply
       trên DataFrame lớn (Bài 3: tư duy vector hoá, Bài 7: str accessor).
     """
+    if pd.api.types.is_numeric_dtype(series):
+        return series.astype(float)
     return (
         series
         .astype(str)
         .str.replace(r"[$,]", "", regex=True)
         .str.strip()
-        .replace("", np.nan)
+        .replace(["", "nan", "N/A", "None"], np.nan)
         .astype(float)
     )
 
@@ -73,30 +77,33 @@ def coerce_dtypes(df: pd.DataFrame) -> pd.DataFrame:
 
     # Host response rate: '95%' → 0.95
     if "host_response_rate" in df.columns:
-        df["host_response_rate"] = (
-            df["host_response_rate"]
-            .astype(str)
-            .str.replace("%", "", regex=False)
-            .replace(["N/A", "nan", ""], np.nan)
-            .astype(float) / 100
-        )
+        if not pd.api.types.is_numeric_dtype(df["host_response_rate"]):
+            df["host_response_rate"] = (
+                df["host_response_rate"]
+                .astype(str)
+                .str.replace("%", "", regex=False)
+                .replace(["N/A", "nan", ""], np.nan)
+                .astype(float) / 100
+            )
 
     # Host acceptance rate
     if "host_acceptance_rate" in df.columns:
-        df["host_acceptance_rate"] = (
-            df["host_acceptance_rate"]
-            .astype(str)
-            .str.replace("%", "", regex=False)
-            .replace(["N/A", "nan", ""], np.nan)
-            .astype(float) / 100
-        )
+        if not pd.api.types.is_numeric_dtype(df["host_acceptance_rate"]):
+            df["host_acceptance_rate"] = (
+                df["host_acceptance_rate"]
+                .astype(str)
+                .str.replace("%", "", regex=False)
+                .replace(["N/A", "nan", ""], np.nan)
+                .astype(float) / 100
+            )
 
     # Boolean columns: 't'/'f' → True/False
     bool_cols = ["host_is_superhost", "instant_bookable",
                  "has_availability"]
     for col in bool_cols:
         if col in df.columns:
-            df[col] = df[col].map({"t": True, "f": False})
+            if not pd.api.types.is_bool_dtype(df[col]):
+                df[col] = df[col].map({"t": True, "f": False, True: True, False: False, "True": True, "False": False})
 
     # Numeric columns
     num_cols = [
@@ -477,6 +484,7 @@ def apply_latest_snapshot_price_policy(all_dfs: dict, cfg: dict) -> list:
     return reports
 
 
+@measure_execution_time(label="run_qa")
 def run_qa(raw_paths: dict, cfg: dict) -> tuple:
     """Chạy QA cho tất cả các mốc chụp.
 

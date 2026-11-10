@@ -24,6 +24,8 @@ from typing import Dict, List, Tuple
 import pandas as pd
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support, classification_report
 
+from src.logger import measure_execution_time
+
 from src.baseline import classify_review_baseline
 
 logger = logging.getLogger(__name__)
@@ -69,6 +71,7 @@ def evaluate_aspect_extraction(true_aspects_list: List[str], pred_aspects_list: 
     return round(float(sum(jaccards) / len(jaccards) * 100), 2) if jaccards else 0.0
 
 
+@measure_execution_time(label="run_evaluation")
 def run_evaluation(cfg: dict, gold_labels_path: str = "data/samples/manual_labels_100.csv") -> dict:
     """Quy trình đánh giá toàn diện LLM vs Baseline trên 100 nhãn tay."""
     logger.info("═══ BẮT ĐẦU ĐÁNH GIÁ CHẤT LƯỢNG LLM VS BASELINE TRÊN 100 NHÃN TAY ═══")
