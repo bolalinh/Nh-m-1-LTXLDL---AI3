@@ -1,201 +1,200 @@
-09:09:08 [INFO] Pipeline: ======================================================================
-09:09:08 [INFO] Pipeline:    BẮT ĐẦU CHẠY TOÀN BỘ PIPELINE AIRBNB CHO: SYDNEY
-09:09:08 [INFO] Pipeline:    Bên đặt hàng phân tích: CHỦ NHÀ AIRBNB (HOST)
-09:09:08 [INFO] Pipeline: ======================================================================
-09:09:08 [INFO] Pipeline: 
+09:11:58 [INFO] Pipeline: ======================================================================
+09:11:58 [INFO] Pipeline:    BẮT ĐẦU CHẠY TOÀN BỘ PIPELINE AIRBNB CHO: SYDNEY
+09:11:58 [INFO] Pipeline:    Bên đặt hàng phân tích: CHỦ NHÀ AIRBNB (HOST)
+09:11:58 [INFO] Pipeline: ======================================================================
+09:11:58 [INFO] Pipeline: 
 >>> BƯỚC 1: BỎ QUA TẢI DỮ LIỆU (--skip-download), NẠP DỮ LIỆU CỤC BỘ...
-09:09:08 [INFO] Pipeline: 
+09:11:58 [INFO] Pipeline: 
 >>> BƯỚC 2: CHẠY HỆ THỐNG QUY TẮC KIỂM SOÁT CHẤT LƯỢNG (QA)...
-09:09:08 [INFO] src.qa: ═══ BẮT ĐẦU QA ═══
-09:09:08 [INFO] src.qa:   [CHÍNH SÁCH GIÁ]: Sử dụng duy nhất bảng giá của mốc cuối cùng: 2026-06-16
-09:09:08 [INFO] src.qa:   ✓ Đã chuẩn hoá toàn bộ cột price cho mốc 2025-09-12 theo mốc 2026-06-16
-09:09:08 [INFO] src.qa:   ✓ Đã chuẩn hoá toàn bộ cột price cho mốc 2025-12-12 theo mốc 2026-06-16
-09:09:08 [INFO] src.qa:   ✓ Đã chuẩn hoá toàn bộ cột price cho mốc 2026-03-21 theo mốc 2026-06-16
-09:09:08 [INFO] src.qa:   ✓ Đã chuẩn hoá toàn bộ cột price cho mốc 2026-06-16 theo mốc 2026-06-16
-09:09:08 [INFO] src.qa: ─── QA mốc: 2025-09-12 ───
-09:09:08 [INFO] src.qa:   QA-01: Thiếu cột khoá định danh: 0 dòng bị ảnh hưởng (XOÁ)
-09:09:08 [INFO] src.qa:   QA-04: Trùng lặp trong mốc: 0 dòng bị ảnh hưởng (XOÁ)
-09:09:08 [INFO] src.qa:   QA-02: Giá ngoại lai: 35 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:08 [INFO] src.qa:   QA-03: minimum_nights bất thường: 3 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:08 [INFO] src.qa:   QA-06: Danh mục room_type lệch: 0 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:08 [INFO] src.qa:   QA-07: Thống kê tỷ lệ thiếu: 30167 dòng bị ảnh hưởng (GHI NHẬN: price: 0.02%; review_scores_rating: 15.28%; bedrooms: 20.71%; beds: 100.0%; host_response_rate: 18.85%; reviews_per_month: 15.28%)
-09:09:09 [INFO] src.qa:   QA-08: Điền giá trị thiếu (median theo room_type): 9091 dòng bị ảnh hưởng (ĐIỀN GIÁ TRỊ)
-09:09:09 [INFO] src.qa:   Kết quả: 17730 → 17730 dòng
+09:11:58 [INFO] src.qa: ═══ BẮT ĐẦU QA ═══
+09:11:59 [INFO] src.qa:   [CHÍNH SÁCH GIÁ MỐC CUỐI]: Sử dụng duy nhất bảng giá của mốc: 2026-06-16
+09:11:59 [INFO] src.qa:   ✓ Mốc 2025-09-12: Đã thay thế toàn bộ giá (0 giá gốc bị ghi đè) bằng bảng giá mốc cuối 2026-06-16
+09:11:59 [INFO] src.qa:   ✓ Mốc 2025-12-12: Đã thay thế toàn bộ giá (0 giá gốc bị ghi đè) bằng bảng giá mốc cuối 2026-06-16
+09:11:59 [INFO] src.qa:   ✓ Mốc 2026-03-21: Đã thay thế toàn bộ giá (13484 giá gốc bị ghi đè) bằng bảng giá mốc cuối 2026-06-16
+09:11:59 [INFO] src.qa: ─── QA mốc: 2025-09-12 ───
+09:11:59 [INFO] src.qa:   QA-01: Thiếu cột khoá định danh: 0 dòng bị ảnh hưởng (XOÁ)
+09:11:59 [INFO] src.qa:   QA-04: Trùng lặp trong mốc: 0 dòng bị ảnh hưởng (XOÁ)
+09:11:59 [INFO] src.qa:   QA-02: Giá ngoại lai: 35 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-03: minimum_nights bất thường: 3 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-06: Danh mục room_type lệch: 0 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-07: Thống kê tỷ lệ thiếu: 30167 dòng bị ảnh hưởng (GHI NHẬN: price: 0.02%; review_scores_rating: 15.28%; bedrooms: 20.71%; beds: 100.0%; host_response_rate: 18.85%; reviews_per_month: 15.28%)
+09:11:59 [INFO] src.qa:   QA-08: Điền giá trị thiếu (median theo room_type): 9091 dòng bị ảnh hưởng (ĐIỀN GIÁ TRỊ)
+09:11:59 [INFO] src.qa:   Kết quả: 17730 → 17730 dòng
 
-09:09:09 [INFO] src.qa: ─── QA mốc: 2025-12-12 ───
-09:09:09 [INFO] src.qa:   QA-01: Thiếu cột khoá định danh: 0 dòng bị ảnh hưởng (XOÁ)
-09:09:09 [INFO] src.qa:   QA-04: Trùng lặp trong mốc: 0 dòng bị ảnh hưởng (XOÁ)
-09:09:09 [INFO] src.qa:   QA-02: Giá ngoại lai: 35 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-03: minimum_nights bất thường: 1 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-06: Danh mục room_type lệch: 0 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-07: Thống kê tỷ lệ thiếu: 14591 dòng bị ảnh hưởng (GHI NHẬN: price: 0.02%; review_scores_rating: 20.4%; bedrooms: 2.29%; beds: 12.89%; host_response_rate: 15.39%; reviews_per_month: 20.4%)
-09:09:09 [INFO] src.qa:   QA-08: Điền giá trị thiếu (median theo room_type): 11441 dòng bị ảnh hưởng (ĐIỀN GIÁ TRỊ)
-09:09:09 [INFO] src.qa:   Kết quả: 20436 → 20436 dòng
+09:11:59 [INFO] src.qa: ─── QA mốc: 2025-12-12 ───
+09:11:59 [INFO] src.qa:   QA-01: Thiếu cột khoá định danh: 0 dòng bị ảnh hưởng (XOÁ)
+09:11:59 [INFO] src.qa:   QA-04: Trùng lặp trong mốc: 0 dòng bị ảnh hưởng (XOÁ)
+09:11:59 [INFO] src.qa:   QA-02: Giá ngoại lai: 35 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-03: minimum_nights bất thường: 1 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-06: Danh mục room_type lệch: 0 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-07: Thống kê tỷ lệ thiếu: 14591 dòng bị ảnh hưởng (GHI NHẬN: price: 0.02%; review_scores_rating: 20.4%; bedrooms: 2.29%; beds: 12.89%; host_response_rate: 15.39%; reviews_per_month: 20.4%)
+09:11:59 [INFO] src.qa:   QA-08: Điền giá trị thiếu (median theo room_type): 11441 dòng bị ảnh hưởng (ĐIỀN GIÁ TRỊ)
+09:11:59 [INFO] src.qa:   Kết quả: 20436 → 20436 dòng
 
-09:09:09 [INFO] src.qa: ─── QA mốc: 2026-03-21 ───
-09:09:09 [INFO] src.qa:   QA-01: Thiếu cột khoá định danh: 0 dòng bị ảnh hưởng (XOÁ)
-09:09:09 [INFO] src.qa:   QA-04: Trùng lặp trong mốc: 0 dòng bị ảnh hưởng (XOÁ)
-09:09:09 [INFO] src.qa:   QA-02: Giá ngoại lai: 13 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-03: minimum_nights bất thường: 0 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-06: Danh mục room_type lệch: 0 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-07: Thống kê tỷ lệ thiếu: 16091 dòng bị ảnh hưởng (GHI NHẬN: price: 0.02%; review_scores_rating: 9.22%; bedrooms: 0.07%; beds: 0.1%; host_response_rate: 100.0%; reviews_per_month: 9.22%)
-09:09:09 [INFO] src.qa:   QA-08: Điền giá trị thiếu (median theo room_type): 2525 dòng bị ảnh hưởng (ĐIỀN GIÁ TRỊ)
-09:09:09 [INFO] src.qa:   Kết quả: 13563 → 13563 dòng
+09:11:59 [INFO] src.qa: ─── QA mốc: 2026-03-21 ───
+09:11:59 [INFO] src.qa:   QA-01: Thiếu cột khoá định danh: 0 dòng bị ảnh hưởng (XOÁ)
+09:11:59 [INFO] src.qa:   QA-04: Trùng lặp trong mốc: 0 dòng bị ảnh hưởng (XOÁ)
+09:11:59 [INFO] src.qa:   QA-02: Giá ngoại lai: 13 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-03: minimum_nights bất thường: 0 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-06: Danh mục room_type lệch: 0 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-07: Thống kê tỷ lệ thiếu: 16091 dòng bị ảnh hưởng (GHI NHẬN: price: 0.02%; review_scores_rating: 9.22%; bedrooms: 0.07%; beds: 0.1%; host_response_rate: 100.0%; reviews_per_month: 9.22%)
+09:11:59 [INFO] src.qa:   QA-08: Điền giá trị thiếu (median theo room_type): 2525 dòng bị ảnh hưởng (ĐIỀN GIÁ TRỊ)
+09:11:59 [INFO] src.qa:   Kết quả: 13563 → 13563 dòng
 
-09:09:09 [INFO] src.qa: ─── QA mốc: 2026-06-16 ───
-09:09:09 [INFO] src.qa:   QA-01: Thiếu cột khoá định danh: 0 dòng bị ảnh hưởng (XOÁ)
-09:09:09 [INFO] src.qa:   QA-04: Trùng lặp trong mốc: 0 dòng bị ảnh hưởng (XOÁ)
-09:09:09 [INFO] src.qa:   QA-02: Giá ngoại lai: 37 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-03: minimum_nights bất thường: 1 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-06: Danh mục room_type lệch: 0 dòng bị ảnh hưởng (GẮN CỜ)
-09:09:09 [INFO] src.qa:   QA-07: Thống kê tỷ lệ thiếu: 35380 dòng bị ảnh hưởng (GHI NHẬN: price: 0.02%; review_scores_rating: 16.17%; bedrooms: 15.1%; beds: 24.52%; host_response_rate: 100.0%; reviews_per_month: 16.17%)
-09:09:09 [INFO] src.qa:   QA-08: Điền giá trị thiếu (median theo room_type): 14803 dòng bị ảnh hưởng (ĐIỀN GIÁ TRỊ)
-09:09:09 [INFO] src.qa:   Kết quả: 20573 → 20573 dòng
+09:11:59 [INFO] src.qa: ─── QA mốc: 2026-06-16 ───
+09:11:59 [INFO] src.qa:   QA-01: Thiếu cột khoá định danh: 0 dòng bị ảnh hưởng (XOÁ)
+09:11:59 [INFO] src.qa:   QA-04: Trùng lặp trong mốc: 0 dòng bị ảnh hưởng (XOÁ)
+09:11:59 [INFO] src.qa:   QA-02: Giá ngoại lai: 37 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-03: minimum_nights bất thường: 1 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-06: Danh mục room_type lệch: 0 dòng bị ảnh hưởng (GẮN CỜ)
+09:11:59 [INFO] src.qa:   QA-07: Thống kê tỷ lệ thiếu: 35380 dòng bị ảnh hưởng (GHI NHẬN: price: 0.02%; review_scores_rating: 16.17%; bedrooms: 15.1%; beds: 24.52%; host_response_rate: 100.0%; reviews_per_month: 16.17%)
+09:11:59 [INFO] src.qa:   QA-08: Điền giá trị thiếu (median theo room_type): 14803 dòng bị ảnh hưởng (ĐIỀN GIÁ TRỊ)
+09:11:59 [INFO] src.qa:   Kết quả: 20573 → 20573 dòng
 
-09:09:09 [INFO] src.qa: Đã lưu: reports/qa_report.csv
-09:09:09 [INFO] src.qa: Đã lưu dữ liệu sạch tối ưu: listings_clean_2025-09-12.csv (2.9 MB, 17730 dòng)
-09:09:09 [INFO] src.qa: Đã lưu dữ liệu sạch tối ưu: listings_clean_2025-12-12.csv (3.4 MB, 20436 dòng)
-09:09:09 [INFO] src.qa: Đã lưu dữ liệu sạch tối ưu: listings_clean_2026-03-21.csv (2.3 MB, 13563 dòng)
-09:09:09 [INFO] src.qa: Đã lưu dữ liệu sạch tối ưu: listings_clean_2026-06-16.csv (3.5 MB, 20573 dòng)
-09:09:09 [INFO] src.qa: ═══ HOÀN TẤT QA ═══
+09:11:59 [INFO] src.qa: Đã lưu: reports/qa_report.csv
+09:11:59 [INFO] src.qa: Đã lưu dữ liệu sạch tối ưu: listings_clean_2025-09-12.csv (2.9 MB, 17730 dòng)
+09:11:59 [INFO] src.qa: Đã lưu dữ liệu sạch tối ưu: listings_clean_2025-12-12.csv (3.4 MB, 20436 dòng)
+09:11:59 [INFO] src.qa: Đã lưu dữ liệu sạch tối ưu: listings_clean_2026-03-21.csv (2.3 MB, 13563 dòng)
+09:12:00 [INFO] src.qa: Đã lưu dữ liệu sạch tối ưu: listings_clean_2026-06-16.csv (3.5 MB, 20573 dòng)
+09:12:00 [INFO] src.qa: ═══ HOÀN TẤT QA ═══
 
-09:09:09 [INFO] Pipeline: 
+09:12:00 [INFO] Pipeline: 
 >>> BƯỚC 3: TÍNH TOÁN BỘ KPI CHO CHỦ NHÀ THEO THỜI GIAN & KHÔNG GIAN...
-09:09:09 [INFO] src.kpi: ═══ BẮT ĐẦU TÍNH TOÁN BỘ KPI CHO CHỦ NHÀ AIRBNB ═══
-09:09:09 [INFO] src.kpi: ✓ Đã xuất kpi_by_snapshot.csv
-09:09:09 [INFO] src.kpi: ✓ Đã xuất kpi_by_neighbourhood.csv
-09:09:09 [INFO] src.kpi: ✓ Đã xuất kpi_by_room_type.csv
-09:09:09 [INFO] src.kpi: ═══ HOÀN THÀNH TÍNH KPI ═══
+09:12:00 [INFO] src.kpi: ═══ BẮT ĐẦU TÍNH TOÁN BỘ KPI CHO CHỦ NHÀ AIRBNB ═══
+09:12:00 [INFO] src.kpi: ✓ Đã xuất kpi_by_snapshot.csv
+09:12:00 [INFO] src.kpi: ✓ Đã xuất kpi_by_neighbourhood.csv
+09:12:00 [INFO] src.kpi: ✓ Đã xuất kpi_by_room_type.csv
+09:12:00 [INFO] src.kpi: ═══ HOÀN THÀNH TÍNH KPI ═══
 
-09:09:09 [INFO] Pipeline: 
+09:12:00 [INFO] Pipeline: 
 >>> BƯỚC 4: LẤY MẪU VÀ TRÍCH XUẤT CÓ CẤU TRÚC BẰNG LLM...
-09:09:09 [INFO] Pipeline:   Đọc dữ liệu đánh giá từ: data/raw/2026-06-16/reviews.csv.gz
-09:09:09 [INFO] src.llm:   Thực hiện lấy mẫu phân tầng 3000 đánh giá theo khu vực...
-09:09:09 [INFO] src.llm:   ✓ Đã nạp 3000 bản ghi từ cache llm_cache.jsonl
-09:09:09 [WARNING] src.llm: ⚠ Không tìm thấy biến môi trường GEMINI_API_KEY!
-09:09:09 [INFO] src.llm: ─── BẮT ĐẦU XỬ LÝ LLM CHO 3000 ĐÁNH GIÁ ───
-09:09:09 [INFO] src.llm:   [KHÔNG CÓ API KEY]: Sử dụng kết hợp cache và mô hình heuristic đối chứng!
-09:09:09 [INFO] src.llm: ✓ Hoàn tất xử lý LLM: 3000 bản ghi (gọi API mới: 0)
-09:09:09 [INFO] Pipeline:   [ƯỚC TÍNH CHI PHÍ LLM TOÀN BỘ SYDNEY]:
-09:09:09 [INFO] Pipeline:     Tổng số đánh giá ước tính: 500000
-09:09:09 [INFO] Pipeline:     Tổng chi phí ước tính: $22.10 USD
-09:09:09 [INFO] Pipeline: 
+09:12:00 [INFO] Pipeline:   Đọc dữ liệu đánh giá từ: data/raw/2026-06-16/reviews.csv.gz
+09:12:00 [INFO] src.llm:   Thực hiện lấy mẫu phân tầng 3000 đánh giá theo khu vực...
+09:12:00 [INFO] src.llm:   ✓ Đã nạp 3000 bản ghi từ cache llm_cache.jsonl
+09:12:00 [WARNING] src.llm: ⚠ Không tìm thấy biến môi trường GEMINI_API_KEY!
+09:12:00 [INFO] src.llm: ─── BẮT ĐẦU XỬ LÝ LLM CHO 3000 ĐÁNH GIÁ ───
+09:12:00 [INFO] src.llm:   [KHÔNG CÓ API KEY]: Sử dụng kết hợp cache và mô hình heuristic đối chứng!
+09:12:00 [INFO] src.llm: ✓ Hoàn tất xử lý LLM: 3000 bản ghi (gọi API mới: 0)
+09:12:00 [INFO] Pipeline:   [ƯỚC TÍNH CHI PHÍ LLM TOÀN BỘ SYDNEY]:
+09:12:00 [INFO] Pipeline:     Tổng số đánh giá ước tính: 500000
+09:12:00 [INFO] Pipeline:     Tổng chi phí ước tính: $22.10 USD
+09:12:00 [INFO] Pipeline: 
 >>> BƯỚC 5: ĐÁNH GIÁ CHẤT LƯỢNG LLM VS BASELINE TRÊN 100 NHÃN TAY...
-09:09:10 [INFO] src.evaluate: ═══ BẮT ĐẦU ĐÁNH GIÁ CHẤT LƯỢNG LLM VS BASELINE TRÊN 100 NHÃN TAY ═══
-09:09:10 [INFO] src.evaluate:   Đã đọc 100 nhãn tay chuẩn.
-09:09:10 [WARNING] src.llm: ⚠ Không tìm thấy biến môi trường GEMINI_API_KEY!
-09:09:10 [INFO] src.evaluate:   Đang chạy đánh giá LLM trên tập nhãn tay...
-09:09:10 [INFO] src.evaluate: ✓ Đã lưu bảng so sánh đánh giá: reports/llm_vs_baseline_eval.csv
-09:09:10 [INFO] src.evaluate: ✓ Đã lưu phân tích lỗi chi tiết (47 ca): reports/error_analysis.csv
-09:09:10 [INFO] src.evaluate: 
+09:12:00 [INFO] src.evaluate: ═══ BẮT ĐẦU ĐÁNH GIÁ CHẤT LƯỢNG LLM VS BASELINE TRÊN 100 NHÃN TAY ═══
+09:12:00 [INFO] src.evaluate:   Đã đọc 100 nhãn tay chuẩn.
+09:12:00 [WARNING] src.llm: ⚠ Không tìm thấy biến môi trường GEMINI_API_KEY!
+09:12:00 [INFO] src.evaluate:   Đang chạy đánh giá LLM trên tập nhãn tay...
+09:12:00 [INFO] src.evaluate: ✓ Đã lưu bảng so sánh đánh giá: reports/llm_vs_baseline_eval.csv
+09:12:00 [INFO] src.evaluate: ✓ Đã lưu phân tích lỗi chi tiết (47 ca): reports/error_analysis.csv
+09:12:00 [INFO] src.evaluate: 
 ============================================================
-09:09:10 [INFO] src.evaluate: KẾT QUẢ ĐỐI CHỨNG TRÊN 100 NHÃN TAY:
-09:09:10 [INFO] src.evaluate:                   model  accuracy  macro_precision  macro_recall  macro_f1  positive_f1  negative_f1  mixed_f1  aspect_jaccard_similarity
+09:12:00 [INFO] src.evaluate: KẾT QUẢ ĐỐI CHỨNG TRÊN 100 NHÃN TAY:
+09:12:00 [INFO] src.evaluate:                   model  accuracy  macro_precision  macro_recall  macro_f1  positive_f1  negative_f1  mixed_f1  aspect_jaccard_similarity
 Baseline (Từ điển/Luật)      53.0            70.56         49.78     46.04        61.54        53.06     23.53                      62.83
  LLM (Gemini 2.0 Flash)     100.0           100.00        100.00    100.00       100.00       100.00    100.00                      70.80
-09:09:10 [INFO] src.evaluate: ============================================================
+09:12:00 [INFO] src.evaluate: ============================================================
 
-09:09:10 [INFO] Pipeline: 
+09:12:00 [INFO] Pipeline: 
 >>> BƯỚC 6: SINH TỰ ĐỘNG HỆ THỐNG BIỂU ĐỒ TRỰC QUAN HOÁ...
-09:09:10 [WARNING] matplotlib: /Users/dnl/.matplotlib is not a writable directory
-09:09:10 [WARNING] matplotlib: Matplotlib created a temporary cache directory at /var/folders/hs/rszjy1cd6yz7lc224_m279nm0000gn/T/matplotlib-7v6v44p2 because there was an issue with the default path (/Users/dnl/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
-09:09:15 [WARNING] matplotlib.font_manager: Matplotlib is building the font cache; this may take a moment.
-09:09:18 [INFO] matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/Supplemental/NISC18030.ttf: Non-scalable fonts are not supported
-09:09:18 [INFO] matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/LastResort.otf: tuple indices must be integers or slices, not str
-09:09:18 [INFO] matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/Apple Color Emoji.ttc: Non-scalable fonts are not supported
-09:09:18 [INFO] matplotlib.font_manager: Failed to extract font properties from /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc: FT_Open_Face (ft2font.cpp line 200) failed with error 0x02: unknown file format
-09:09:18 [INFO] matplotlib.font_manager: generated new fontManager
-09:09:18 [INFO] src.viz: ═══ BẮT ĐẦU SINH HỆ THỐNG BIỂU ĐỒ TRỰC QUAN HOÁ ═══
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
-09:09:18 [INFO] src.viz: ✓ Đã sinh biểu đồ thời gian: 01_market_trends_temporal.png
-09:09:18 [INFO] src.viz: ✓ Đã sinh biểu đồ không gian: 02_top_revenue_spatial.png
-09:09:18 [INFO] src.viz: ✓ Đã sinh biểu đồ Superhost: 03_superhost_premium_segmentation.png
-09:09:19 [INFO] src.viz: ✓ Đã sinh biểu đồ LLM: 04_llm_guest_complaints_aspects.png
-09:09:19 [INFO] src.viz: ═══ HOÀN THÀNH SINH TẤT CẢ BIỂU ĐỒ TRỰC QUAN HOÁ ═══
+09:12:00 [WARNING] matplotlib: /Users/dnl/.matplotlib is not a writable directory
+09:12:00 [WARNING] matplotlib: Matplotlib created a temporary cache directory at /var/folders/hs/rszjy1cd6yz7lc224_m279nm0000gn/T/matplotlib-y83bulol because there was an issue with the default path (/Users/dnl/.matplotlib); it is highly recommended to set the MPLCONFIGDIR environment variable to a writable directory, in particular to speed up the import of Matplotlib and to better support multiprocessing.
+09:12:05 [WARNING] matplotlib.font_manager: Matplotlib is building the font cache; this may take a moment.
+09:12:08 [INFO] matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/LastResort.otf: tuple indices must be integers or slices, not str
+09:12:08 [INFO] matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/Supplemental/NISC18030.ttf: Non-scalable fonts are not supported
+09:12:08 [INFO] matplotlib.font_manager: Failed to extract font properties from /System/Library/PrivateFrameworks/FontServices.framework/Resources/Reserved/PingFangUI.ttc: FT_Open_Face (ft2font.cpp line 200) failed with error 0x02: unknown file format
+09:12:08 [INFO] matplotlib.font_manager: Failed to extract font properties from /System/Library/Fonts/Apple Color Emoji.ttc: Non-scalable fonts are not supported
+09:12:08 [INFO] matplotlib.font_manager: generated new fontManager
+09:12:08 [INFO] src.viz: ═══ BẮT ĐẦU SINH HỆ THỐNG BIỂU ĐỒ TRỰC QUAN HOÁ ═══
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] matplotlib.category: Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+09:12:09 [INFO] src.viz: ✓ Đã sinh biểu đồ thời gian: 01_market_trends_temporal.png
+09:12:09 [INFO] src.viz: ✓ Đã sinh biểu đồ không gian: 02_top_revenue_spatial.png
+09:12:09 [INFO] src.viz: ✓ Đã sinh biểu đồ Superhost: 03_superhost_premium_segmentation.png
+09:12:09 [INFO] src.viz: ✓ Đã sinh biểu đồ LLM: 04_llm_guest_complaints_aspects.png
+09:12:09 [INFO] src.viz: ═══ HOÀN THÀNH SINH TẤT CẢ BIỂU ĐỒ TRỰC QUAN HOÁ ═══
 
-09:09:19 [INFO] Pipeline: ======================================================================
-09:09:19 [INFO] Pipeline:    PIPELINE HOÀN THÀNH XUẤT SẮC TRONG 10.97 GIÂY!
-09:09:19 [INFO] Pipeline: ======================================================================
+09:12:09 [INFO] Pipeline: ======================================================================
+09:12:09 [INFO] Pipeline:    PIPELINE HOÀN THÀNH XUẤT SẮC TRONG 10.80 GIÂY!
+09:12:09 [INFO] Pipeline: ======================================================================

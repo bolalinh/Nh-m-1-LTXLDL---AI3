@@ -414,51 +414,65 @@ def clean_listings(df: pd.DataFrame, cfg: dict) -> tuple:
 def apply_latest_snapshot_price_policy(all_dfs: dict, cfg: dict) -> list:
     """QA-00: Áp dụng chính sách neo giá chỉ dùng giá của mốc cuối cùng (Latest Snapshot Price Policy).
     
-    YÊU CẦU ĐẶC BIỆT:
-    - Toàn bộ cột price trong toàn bộ các mốc chỉ sử dụng giá từ mốc chụp cuối cùng (ví dụ: 2026-06-16).
-    - Lợi ích:
-      1. Đảm bảo tính nhất quán tuyệt đối về mặt giá cả (Real-term Constant Price Analysis).
-      2. Loại bỏ hoàn toàn lỗi scraper thiếu giá ở các bản chụp năm 2025.
-      3. Giúp chủ nhà đánh giá hiệu quả kinh doanh của các mùa dựa trên mức giá thị trường hiện tại.
+    YÊU CẦU ĐẶC BIỆT THEO CHỈ ĐẠO:
+    - Toàn bộ giá của các mốc trước đó (2025-09-12, 2025-12-12, 2026-03-21) dù có sẵn giá trong file gốc
+      hay không, đều BỊ THAY THẾ HOÀN TOÀN bằng giá niêm yết của mốc chụp cuối cùng (2026-06-16).
+    - Quy trình thực hiện triệt để:
+      1. Chuẩn hoá và làm sạch bảng giá của mốc cuối cùng (2026-06-16).
+      2. Với mọi mốc trước đó, xoá bỏ giá gốc và ánh xạ 100% theo ID từ bảng giá mốc cuối cùng.
+      3. Nếu căn phòng nào ở mốc cũ không còn tồn tại ở mốc cuối cùng, gán bằng Median giá của mốc cuối
+         theo đúng (neighbourhood_cleansed, room_type).
     """
     reports = []
-    # Xác định mốc cuối cùng
     latest_snapshot = max(all_dfs.keys())
     ref_df = all_dfs[latest_snapshot]
 
-    logger.info("  [CHÍNH SÁCH GIÁ]: Sử dụng duy nhất bảng giá của mốc cuối cùng: %s", latest_snapshot)
+    logger.info("  [CHÍNH SÁCH GIÁ MỐC CUỐI]: Sử dụng duy nhất bảng giá của mốc: %s", latest_snapshot)
 
-    # Bảng giá chuẩn từ mốc cuối cùng theo ID
+    # 1. Tính toán trước giá trung vị theo nhóm của mốc cuối cùng để làm phương án dự phòng
+    group_medians_latest = ref_df.groupby(["neighbourhood_cleansed", "room_type"], observed=True)["price"].median().to_dict()
+    global_median_latest = ref_df["price"].median()
+
+    # Điền giá thiếu cho chính mốc cuối cùng trước nếu có
+    ref_keys = list(zip(ref_df["neighbourhood_cleansed"], ref_df["room_type"]))
+    ref_imputed = pd.Series([group_medians_latest.get(k, global_median_latest) for k in ref_keys], index=ref_df.index)
+    ref_df["price"] = ref_df["price"].fillna(ref_imputed)
+
+    # Bảng giá chuẩn tuyệt đối của mốc cuối cùng theo ID
     id_to_latest_price = ref_df.set_index("id")["price"].dropna().to_dict()
-    # Bảng giá trung vị theo nhóm (neighbourhood, room_type) của mốc cuối cùng
-    group_medians = ref_df.groupby(["neighbourhood_cleansed", "room_type"], observed=True)["price"].median().to_dict()
-    global_median = ref_df["price"].median()
 
     for snap, df in all_dfs.items():
-        before_prices = df["price"].copy()
-        
-        # Áp dụng giá của mốc cuối cùng:
-        # 1. Nếu listing có mặt ở mốc cuối cùng -> Lấy đúng giá mốc cuối
-        mapped_price = df["id"].map(id_to_latest_price)
-        
-        # 2. Nếu listing chỉ có ở mốc cũ (không có ở mốc cuối) -> Gán bằng median nhóm tương ứng ở mốc cuối
-        group_keys = list(zip(df["neighbourhood_cleansed"], df["room_type"]))
-        group_imputed = pd.Series([group_medians.get(k, global_median) for k in group_keys], index=df.index)
-        
-        # Ghi đè giá hoàn toàn theo chính sách mốc cuối cùng
-        df["price"] = mapped_price.fillna(group_imputed)
-        
+        if snap == latest_snapshot:
+            # Mốc cuối cùng: đã có giá chuẩn
+            continue
+
+        # ĐẾM SỐ PHÒNG CÓ GIÁ GỐC TRƯỚC ĐÓ BỊ THAY THẾ
+        original_prices_count = df["price"].notna().sum()
+
+        # BƯỚC 1: ÁNH XẠ GIÁ THEO ID TỪ MỐC CUỐI CÙNG (GHI ĐÈ HOÀN TOÀN GIÁ GỐC NẾU CÓ)
+        price_from_latest_id = df["id"].map(id_to_latest_price)
+
+        # BƯỚC 2: VỚI CÁC PHÒNG CŨ KHÔNG XUẤT HIỆN Ở MỐC CUỐI, DÙNG MEDIAN THEO NHÓM CỦA MỐC CUỐI
+        snap_keys = list(zip(df["neighbourhood_cleansed"], df["room_type"]))
+        group_imputed_latest = pd.Series([group_medians_latest.get(k, global_median_latest) for k in snap_keys], index=df.index)
+
+        # GHI ĐÈ 100% CỘT PRICE
+        df["price"] = price_from_latest_id.fillna(group_imputed_latest)
+
         reports.append({
-            "rule": "QA-00: Chuẩn hoá giá theo mốc cuối cùng (Latest Snapshot Price)",
-            "condition": f"Áp dụng bảng giá mốc {latest_snapshot} cho mốc {snap}",
-            "reason": "Quy định phân tích: chỉ dùng giá của mốc cuối cùng để đảm bảo tính nhất quán",
-            "action": "GHI ĐÈ GIÁ THEO MỐC CUỐI",
+            "rule": "QA-00: Thay thế toàn bộ giá bằng giá mốc cuối cùng (2026-06-16)",
+            "condition": f"Mốc {snap} có {original_prices_count} phòng có giá gốc -> Thay thế 100% bằng giá mốc {latest_snapshot}",
+            "reason": "Chính sách phân tích: chỉ dùng giá của mốc cuối cùng, xoá bỏ giá các mốc trước để đồng nhất thị trường",
+            "action": "THAY THẾ TOÀN BỘ BẰNG GIÁ MỐC CUỐI",
             "rows_before": len(df),
             "rows_after": len(df),
             "rows_affected": len(df),
             "snapshot": snap
         })
-        logger.info("  ✓ Đã chuẩn hoá toàn bộ cột price cho mốc %s theo mốc %s", snap, latest_snapshot)
+        logger.info(
+            "  ✓ Mốc %s: Đã thay thế toàn bộ giá (%s giá gốc bị ghi đè) bằng bảng giá mốc cuối %s",
+            snap, str(original_prices_count), latest_snapshot
+        )
 
     return reports
 
