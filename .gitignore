@@ -25,3 +25,7 @@ __pycache__/
 .idea/
 .vscode/
 *.swp
+
+# Nhật ký thực thi (log sinh ra trong lúc chạy, không commit lên git)
+log.txt
+*.log
