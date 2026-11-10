@@ -30,7 +30,6 @@ TIÊU CHUẨN ĐẦU RA BẮT BUỘC ĐƯỢC SINH RA:
 """
 
 import argparse
-import logging
 import sys
 import time
 from pathlib import Path
@@ -38,18 +37,7 @@ from pathlib import Path
 import pandas as pd
 import yaml
 
-# Cấu hình logging chuyên biệt cho nhánh feature/file-logging:
-# Chuyển hướng toàn bộ log chi tiết vào file log.txt để terminal sạch sẽ.
-LOG_FILE_PATH = "log.txt"
-
-file_handler = logging.FileHandler(LOG_FILE_PATH, mode="w", encoding="utf-8")
-file_handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s", datefmt="%H:%M:%S"))
-
-# Root logger chỉ ghi vào file, KHÔNG gắn StreamHandler(sys.stdout) để tránh làm bẩn terminal
-logging.root.setLevel(logging.INFO)
-logging.root.addHandler(file_handler)
-
-logger = logging.getLogger("Pipeline")
+from src.logger import setup_logging
 
 
 def load_config(config_path: str) -> dict:
@@ -57,7 +45,6 @@ def load_config(config_path: str) -> dict:
     p = Path(config_path)
     if not p.exists():
         print(f"[LỖI] Không tìm thấy file cấu hình: {config_path}")
-        logger.error("Không tìm thấy file cấu hình: %s", config_path)
         sys.exit(1)
     with open(p, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
@@ -72,13 +59,8 @@ def main():
     parser.add_argument("--log-file", type=str, default="log.txt", help="Tên file nhật ký (mặc định: log.txt)")
     args = parser.parse_args()
 
-    # Cập nhật đường dẫn file log nếu người dùng tuỳ biến
-    if args.log_file != LOG_FILE_PATH:
-        for h in list(logging.root.handlers):
-            logging.root.removeHandler(h)
-        custom_handler = logging.FileHandler(args.log_file, mode="w", encoding="utf-8")
-        custom_handler.setFormatter(logging.Formatter("%(asctime)s [%(levelname)s] %(name)s: %(message)s", datefmt="%H:%M:%S"))
-        logging.root.addHandler(custom_handler)
+    # Khởi tạo logging qua module độc lập src.logger
+    logger = setup_logging(args.log_file)
 
     start_total_time = time.time()
     cfg = load_config(args.config)
