@@ -142,7 +142,7 @@ Nội dung đánh giá:
 
 def get_gemini_client():
     """Khởi tạo Client kết nối với Gemini API từ biến môi trường."""
-    api_key = os.env.get("GEMINI_API_KEY")
+    api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
         logger.warning("⚠ Không tìm thấy biến môi trường GEMINI_API_KEY!")
         return None
