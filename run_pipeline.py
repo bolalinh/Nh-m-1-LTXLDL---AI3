@@ -41,13 +41,30 @@ from src.logger import PipelineLogger, setup_logging
 
 
 def load_config(config_path: str) -> dict:
-    """Đọc file cấu hình YAML."""
+    """Đọc và chuẩn hóa file cấu hình YAML theo tư duy phòng thủ (Defensive Programming)."""
     p = Path(config_path)
     if not p.exists():
         print(f"[LỖI] Không tìm thấy file cấu hình: {config_path}")
         sys.exit(1)
     with open(p, "r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
+        cfg = yaml.safe_load(f) or {}
+
+    # 1. Chuẩn hóa 'city' nếu là dict hoặc chuỗi
+    city_val = cfg.get("city_name") or cfg.get("city")
+    if isinstance(city_val, dict):
+        cfg["city_info"] = city_val
+        cfg["city"] = city_val.get("name", "Sydney")
+    elif city_val:
+        cfg["city"] = str(city_val)
+    else:
+        cfg["city"] = "Sydney"
+
+    # 2. Chuẩn hóa 'data_root' nếu là dict lồng
+    if isinstance(cfg.get("data_root"), dict):
+        cfg["data_root_paths"] = cfg["data_root"]
+        cfg["data_root"] = cfg["data_root"].get("url", "australia/nsw/sydney")
+
+    return cfg
 
 
 def main():

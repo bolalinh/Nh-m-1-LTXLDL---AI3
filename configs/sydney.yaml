@@ -1,113 +1,540 @@
 # ============================================================
-# configs/sydney.yaml
-# ============================================================
-# Tệp cấu hình cho thành phố Sydney.
-# Mọi tham số (thành phố, mốc chụp, ngưỡng QA, KPI, LLM)
-# đều nằm ở đây → không ghi cứng trong mã nguồn.
-# Giảng viên chỉ cần sửa file này để chạy trên mốc khác.
+# CẤU HÌNH DỰ ÁN PHÂN TÍCH INSIDE AIRBNB - SYDNEY
+# UET.DSE2049 - Nhóm DSE2049-C03-G01
+# TẬP HỢP TOÀN BỘ HẰNG SỐ & BIẾN TOÀN CỤC CHO DỰ ÁN
 # ============================================================
 
-city: sydney
-data_root: australia/nsw/sydney      # dựng URL: data.insideairbnb.com/<data_root>/<mốc>/...
-currency: AUD
+
+# ------------------------------------------------------------
+# 1. THÔNG TIN THÀNH PHỐ
+# ------------------------------------------------------------
+city:
+  name: "Sydney"
+  country: "Australia"
+  state: "NSW"
+
+
+# ------------------------------------------------------------
+# 2. ĐƯỜNG DẪN DỮ LIỆU VÀ THƯ MỤC
+# ------------------------------------------------------------
+data_root:
+  url: "australia/nsw/sydney"
+  raw: "data/raw"
+  processed: "data/processed"
+  figures: "figures"
+  reports: "reports"
+  samples: "data/samples"
+  evaluation: "data/processed"
+
+
+# ------------------------------------------------------------
+# 3. ĐƠN VỊ TIỀN TỆ & QUY CHUẨN GIÁ
+# ------------------------------------------------------------
+currency: "AUD"
+unit_price: "AUD/night"
+
+
+# ------------------------------------------------------------
+# 4. CÁC MỐC DỮ LIỆU (SNAPSHOTS)
+# ------------------------------------------------------------
 snapshots:
   - "2025-09-12"
   - "2025-12-12"
   - "2026-03-21"
   - "2026-06-16"
 
-# Chính sách giá: Chỉ sử dụng bảng giá của mốc chụp cuối cùng (2026-06-16)
-price_policy:
-  mode: latest_snapshot_only
-  reference_snapshot: "2026-06-16"
 
-# ---------- QA ----------
-qa:
-  price_min: 10                # AUD – dưới ngưỡng này coi là lỗi/spam
-  price_max: 10000             # AUD – trên ngưỡng này coi là ngoại lai
-  min_nights_cap: 365          # minimum_nights > giá trị này → bất thường
-  max_nights_cap: 1125         # maximum_nights > giá trị này → bất thường
-  dedupe_keys:                 # cột dùng để phát hiện trùng lặp
-    - id
-    - last_scraped
-  required_cols:               # cột bắt buộc phải có
-    - id
-    - name
-    - host_id
-    - neighbourhood_cleansed
-    - latitude
-    - longitude
-    - price
-    - room_type
-    - minimum_nights
-    - number_of_reviews
-    - availability_365
+# ------------------------------------------------------------
+# 5. KIỂM TRA CHẤT LƯỢNG DỮ LIỆU (QA)
+# ------------------------------------------------------------
+qa: &qa_config
 
-# ---------- KPI ----------
-kpi:
-  area_col: neighbourhood_cleansed
-  # Bên đặt hàng: CHỦ NHÀ AIRBNB
-  # → KPI tập trung vào: doanh thu, tỷ lệ lấp đầy, đánh giá, giá cả
-  metrics:
-    - name: median_price_per_night
-      description: "Giá trung vị mỗi đêm (AUD)"
-      formula: "median(price)"
-      unit: AUD
-    - name: occupancy_rate
-      description: "Tỷ lệ lấp đầy ước tính"
-      formula: "1 - (availability_365 / 365)"
+  # Bật/tắt xuất dữ liệu đã làm sạch
+  clean: true
+
+  # Kích thước mỗi lần đọc CSV
+  chunk_size: 100000
+
+  # Số lượng giá tối đa lưu lại để phân tích ngoại lai
+  diagnostic_sample_size: 200000
+
+  # Kiểm tra và làm sạch giá tiền
+  price:
+    min_valid: 0
+    exclusive_min: true
+    missing_allowed: true
+    symbols_to_strip:
+      - "$"
+      - ","
+    null_representations:
+      - "nan"
+      - "None"
+      - ""
+      - "NaN"
+
+  # Phát hiện ngoại lai giá bằng phương pháp IQR hoặc Percentile
+  price_outlier:
+    method: "IQR"
+    multiplier: 1.5
+    action: "report_only"
+    percentile_threshold: 0.99
+
+  # Kiểm tra tọa độ địa lý
+  coordinates:
+    latitude:
+      min: -90
+      max: 90
+    longitude:
+      min: -180
+      max: 180
+    missing_allowed: false
+
+  # Kiểm tra điểm đánh giá
+  review_score:
+    min: 0
+    max: 100
+
+  # Kiểm tra số lượng review
+  number_of_reviews:
+    min: 0
+
+  # Kiểm tra nội dung review
+  comments:
+    empty_allowed: true
+    min_length: 5
+    short_comment_warning_length: 3
+
+  # Tệp đầu vào và đầu ra QA
+  files:
+    raw_pattern: "{snapshot}/listings.csv.gz"
+    clean_combined: "listings_clean.csv"
+    clean_snapshot_pattern: "listings_clean_{snapshot}.csv"
+    fallback_subset: "listings_subset.csv"
+    qa_report: "reports/qa_report.csv"
+
+
+# ------------------------------------------------------------
+# 6. CÁC CHỈ SỐ ĐÁNH GIÁ HIỆU QUẢ (KPI)
+# ------------------------------------------------------------
+kpi: &kpi_config
+
+  # Định nghĩa tên các cột dữ liệu Inside Airbnb
+  columns:
+    listing_id: "id"
+    host_id: "host_id"
+    price: "price"
+    price_clean: "price_clean"
+    availability: "availability_365"
+    review_count: "number_of_reviews"
+    review_score: "review_scores_rating"
+    area: "neighbourhood_cleansed"
+    analysis_area: "analysis_area"
+    room_type: "room_type"
+    snapshot: "snapshot"
+
+  # KPI 1: Giá thuê trung vị
+  median_price:
+    enabled: true
+    name: "Median Price"
+    valid_price_min: 0
+    exclusive_min: true
+    round_digits: 2
+    unit: "AUD/night"
+    description: "Giá trung vị đại diện thị trường, loại trừ listing thiếu giá"
+
+  # KPI 2: Giá thuê trung bình
+  average_price:
+    enabled: true
+    name_clean: "Average Price (Sau QA)"
+    name_raw: "Average Price (Trước QA)"
+    valid_price_min: 0
+    exclusive_min: true
+    outlier_method: "percentile"
+    percentile: 0.99
+    round_digits: 2
+    unit: "AUD/night"
+    description_clean: "Giá trung bình sau khi lọc ngoại lai phân vị 99%"
+    description_raw: "Giá trung bình thô bị kéo lệch bởi giá ngoại lai"
+
+  # KPI 3 và 4: Tỷ lệ ngày trống và tỷ lệ lấp đầy ước tính
+  availability:
+    enabled: true
+    name: "Availability Rate"
+    days: 365
+    min: 0
+    max: 365
+    round_digits: 2
+    unit: "%"
+    description: "Tỷ lệ ngày mở phòng trong 365 ngày tới"
+
+  occupancy:
+    enabled: true
+    name: "Estimated Occupancy Rate"
+    formula: "100 - availability_rate"
+    round_digits: 2
+    unit: "%"
+    description: "Tỷ lệ lấp đầy phòng ước tính (365 - avail)/365"
+
+  # KPI 5: Tỷ lệ listing có đánh giá
+  review_rate:
+    enabled: true
+    name: "Review Rate"
+    min_reviews: 1
+    round_digits: 2
+    unit: "%"
+    description: "Tỷ lệ listing có ít nhất 1 review"
+
+  # KPI 6: Điểm đánh giá trung bình
+  average_review_score:
+    enabled: true
+    name: "Average Review Score"
+    output_scale: "0-100"
+    source_scales:
+      - "0-5"
+      - "0-100"
+    detection_threshold: 5.0
+    conversion_factor: 20.0
+    round_digits: 2
+    unit: "điểm (0-100)"
+    description: "Điểm đánh giá trung bình quy về thang 100"
+
+  # KPI 7: Số listing trung bình mỗi host & tỷ lệ đa-listing
+  listings_per_host:
+    enabled: true
+    name_per_host: "Listings per Host"
+    multi_listing_threshold: 2
+    round_digits: 2
+    unit: "listings/host"
+    description_per_host: "Số listing trung bình mỗi chủ nhà"
+    multi_host_share:
+      name: "Multi-host Listing Share"
       unit: "%"
-    - name: estimated_monthly_revenue
-      description: "Doanh thu hàng tháng ước tính"
-      formula: "price × (30 × occupancy_rate)"
-      unit: AUD
-    - name: review_score_avg
-      description: "Điểm đánh giá trung bình"
-      formula: "mean(review_scores_rating)"
-      unit: "điểm"
-    - name: response_rate
-      description: "Tỷ lệ phản hồi của chủ nhà"
-      formula: "mean(host_response_rate)"
-      unit: "%"
-    - name: superhost_ratio
-      description: "Tỷ lệ Superhost"
-      formula: "count(host_is_superhost=t) / count(*)"
-      unit: "%"
-    - name: sentiment_positive_ratio
-      description: "Tỷ lệ đánh giá tích cực (từ LLM)"
-      formula: "count(sentiment=positive) / count(*)"
-      unit: "%"
-    - name: top_complaint_aspects
-      description: "Khía cạnh bị phàn nàn nhiều nhất (từ LLM)"
-      formula: "mode(negative_aspects)"
-      unit: "danh mục"
+      description: "Tỷ lệ listing thuộc các chủ nhà sở hữu từ 2 căn trở lên"
 
-# ---------- LLM ----------
-llm:
-  provider: gemini
-  model: gemini-2.0-flash       # model nhanh, miễn phí
-  sample_size: 3000              # cỡ mẫu reviews để gửi LLM
-  sampling_method: stratified    # lấy mẫu phân tầng theo neighbourhood
-  aspects:
-    - vị trí
-    - sạch sẽ
-    - chủ nhà
-    - giá trị
-    - tiện nghi
-    - độ ồn
-    - an toàn
-    - giao thông
-  cache: data/processed/llm_cache.jsonl
-  batch_size: 5                  # số reviews mỗi lần gọi API
-  max_retries: 3
-  temperature: 0.0               # output ổn định, không random
+  # Phân tích theo các nhóm
+  breakdown:
+    by_snapshot: true
+    by_area: true
+    by_room_type: true
+    all_area_label: "ALL"
 
-# ---------- Baseline ----------
-baseline:
-  method: lexicon                # phương pháp đối chứng: từ điển cảm xúc
-  min_manual_labels: 100         # số nhãn tay tối thiểu
+  # Tên các file kết quả xuất ra thư mục processed
+  output:
+    summary: "kpi_summary.csv"
+    by_time: "kpi_by_time.csv"
+    by_area: "kpi_by_area.csv"
+    by_room_type: "kpi_by_room_type.csv"
+    review_rate: "kpi_review_rate.csv"
+    review_score: "kpi_review_score.csv"
+    listings_per_host: "kpi_listings_per_host.csv"
 
-# ---------- Misc ----------
+
+# ------------------------------------------------------------
+# 7. PHÂN TÍCH ĐÁNH GIÁ BẰNG LLM
+# ------------------------------------------------------------
+llm: &llm_config
+
+  # Cấu hình API và Model
+  provider: "gemini"
+  model: "gemini-3.5-flash-lite"
+  temperature: 0.1
+  timeout: 60
+
+  # Tên các biến môi trường chứa khóa API
+  env_keys:
+    gemini: "GEMINI_API_KEY"
+    oxion: "OXION_API_KEY"
+    oxion_base_url: "OXION_BASE_URL"
+    openai: "OPENAI_API_KEY"
+
+  # URL mặc định cho bên cung cấp thay thế (Oxion AI)
+  oxion_default_base_url: "https://oxionai.com/v1"
+
+  # Model mặc định khi fallback theo từng provider
+  fallback_models:
+    gemini: "gemini-3.5-flash-lite"
+    oxion: "gpt-4o-mini"
+    openai: "gpt-4o-mini"
+
+  # Cấu hình chọn mẫu (Sampling)
+  sample_size: 1000
+  random_state: 42
+  group_cols:
+    - "snapshot"
+    - "analysis_area"
+    - "neighbourhood_cleansed"
+    - "room_type"
+    - "listing_id"
+
+  # Tiền xử lý dữ liệu review
+  review:
+    filename: "reviews.csv"
+    columns:
+      - "listing_id"
+      - "id"
+      - "date"
+      - "comments"
+    min_comment_length: 50
+    remove_html_breaks: true
+    html_break_tag: "<br/>"
+    html_break_replacement: " "
+
+  # Giới hạn tốc độ gọi API (Rate limit)
+  rate_limit:
+    calls_per_batch: 20
+    sleep_seconds: 0.5
+
+  # Định nghĩa Schema trích xuất thông tin
+  schema:
+    sentiment:
+      labels:
+        - "positive"
+        - "mixed"
+        - "negative"
+      description: "Tổng thể cảm xúc của khách: positive (hài lòng), mixed (vừa khen vừa chê/trung lập), negative (thất vọng/phàn nàn)"
+    aspects:
+      candidates:
+        - "location"
+        - "cleanliness"
+        - "host"
+        - "value"
+        - "amenities"
+        - "noise"
+      positive_description: "Các khía cạnh được khen ngợi: location, cleanliness, host, value, amenities, noise (yên tĩnh)"
+      negative_description: "Các khía cạnh bị phàn nàn/chê: location, cleanliness, host, value, amenities, noise (ồn ào)"
+    language:
+      default: "en"
+      description: "Mã ngôn ngữ ISO 2 chữ cái: en, es, zh, vi, fr, de, ja, ..."
+
+  # Mẫu Prompt gửi tới mô hình
+  prompts:
+    system_prompt: "Bạn là một trợ lý phân tích review. Chỉ trả về JSON hợp lệ theo schema yêu cầu."
+    gemini_prompt: |
+      Phân tích đánh giá chỗ ở sau và trích xuất cảm xúc, khía cạnh khen/chê và ngôn ngữ.
+
+      Đánh giá: """{text}"""
+    openai_system_prompt: "Bạn là bộ phân tích văn bản có cấu trúc. Chỉ trả về JSON hợp lệ."
+    openai_user_prompt: |
+      Bạn là chuyên gia phân tích dữ liệu du lịch Airbnb. Hãy phân tích đánh giá sau đây và trả về định dạng JSON thuần túy theo cấu trúc:
+      - sentiment: một trong 3 giá trị ['positive', 'mixed', 'negative']
+      - aspects_positive: danh sách các khía cạnh khen ngợi (chọn từ: 'location', 'cleanliness', 'host', 'value', 'amenities', 'noise')
+      - aspects_negative: danh sách các khía cạnh phàn nàn/chê (chọn từ: 'location', 'cleanliness', 'host', 'value', 'amenities', 'noise')
+      - language: mã ngôn ngữ 2 ký tự (en, es, zh, vi, fr, de, ja, ...)
+
+      Đánh giá của khách: """{text}"""
+
+  # Quy tắc luật dự phòng ngoại tuyến (Heuristic Fallback Engine)
+  heuristic_fallback:
+    positive_words:
+      - "great"
+      - "excellent"
+      - "good"
+      - "perfect"
+      - "amazing"
+      - "wonderful"
+      - "love"
+      - "nice"
+      - "clean"
+      - "beautiful"
+      - "quiet"
+      - "helpful"
+      - "friendly"
+      - "superb"
+      - "spacious"
+      - "convenient"
+      - "gem"
+      - "recommend"
+    negative_words:
+      - "bad"
+      - "terrible"
+      - "dirty"
+      - "noisy"
+      - "poor"
+      - "horrible"
+      - "awful"
+      - "small"
+      - "rude"
+      - "expensive"
+      - "broken"
+      - "disappoint"
+      - "issue"
+      - "problem"
+      - "avoid"
+      - "smell"
+      - "cold"
+      - "uncomfortable"
+      - "stain"
+    negation_words:
+      - "not"
+      - "no"
+      - "wasn't"
+      - "never"
+      - "hardly"
+      - "little"
+      - "too"
+    negation_distance: 25
+    aspect_patterns:
+      location:
+        - "location"
+        - "place"
+        - "area"
+        - "walk"
+        - "close to"
+        - "near"
+        - "station"
+        - "beach"
+        - "harbour"
+        - "sydney"
+      cleanliness:
+        - "clean"
+        - "tidy"
+        - "spotless"
+        - "dirty"
+        - "dust"
+        - "smell"
+        - "stain"
+      host:
+        - "host"
+        - "owner"
+        - "communication"
+        - "helpful"
+        - "responsive"
+        - "friendly"
+        - "colleen"
+        - "welcome"
+      value:
+        - "value"
+        - "price"
+        - "worth"
+        - "money"
+        - "expensive"
+        - "cheap"
+        - "affordable"
+      amenities:
+        - "wifi"
+        - "shower"
+        - "bed"
+        - "kitchen"
+        - "bathroom"
+        - "air con"
+        - "pool"
+        - "tv"
+        - "amenity"
+      noise:
+        - "noise"
+        - "noisy"
+        - "loud"
+        - "quiet"
+        - "street"
+        - "traffic"
+        - "bar"
+    language_detection:
+      es:
+        - " el "
+        - " la "
+        - " de "
+        - " y "
+        - " muy "
+        - " fue "
+      fr:
+        - " le "
+        - " la "
+        - " et "
+        - " est "
+        - " très "
+      de:
+        - " der "
+        - " die "
+        - " das "
+        - " und "
+        - " sehr "
+      vi:
+        - " phòng"
+        - " sạch"
+        - " đẹp"
+        - " chủ nhà"
+        - " vị trí"
+      zh_unicode_min: "\u4e00"
+
+  # Bảng giá tham chiếu tính toán chi phí token (USD / 1 triệu tokens) [input, output]
+  pricing_table:
+    gemini-3.5-flash-lite: [0.075, 0.30]
+    gpt-4o-mini: [0.15, 0.60]
+    gpt-4o: [5.00, 15.00]
+    gpt-4.1-mini: [0.40, 1.60]
+    gpt-4.1: [2.00, 8.00]
+    gpt-4-turbo: [10.00, 30.00]
+
+  # Ước tính token bình quân mỗi đánh giá
+  token_estimation:
+    avg_input_tokens_per_review: 350
+    avg_output_tokens_per_review: 80
+
+  # Định nghĩa tên tệp đầu ra của LLM
+  output:
+    cache: "llm_cache.json"
+    labeled_reviews: "llm_reviews_labeled.csv"
+    sentiment_kpi: "kpi_llm_sentiment.csv"
+
+  # Metadata của các chỉ số KPI LLM
+  kpi_metadata:
+    sample_size:
+      name: "LLM Sample Size"
+      unit: "reviews"
+      description: "Số lượng đánh giá mẫu chạy qua LLM"
+    positive_sentiment_rate:
+      name: "Positive Sentiment Rate"
+      unit: "%"
+      description: "Tỷ lệ đánh giá tích cực/hài lòng"
+    mixed_sentiment_rate:
+      name: "Mixed Sentiment Rate"
+      unit: "%"
+      description: "Tỷ lệ đánh giá trung lập hoặc vừa khen vừa chê"
+    negative_complaint_rate:
+      name: "Negative Complaint Rate"
+      unit: "%"
+      description: "Tỷ lệ đánh giá phàn nàn/tiêu cực"
+    net_sentiment_score:
+      name: "Net Sentiment Score"
+      unit: "điểm (-100 đến +100)"
+      description: "% Tích cực trừ % Tiêu cực"
+    top_praise_aspect:
+      name: "Top Praise Aspect"
+      unit: "khía cạnh"
+      description: "Khía cạnh được khen nhiều nhất"
+    top_complaint_aspect:
+      name: "Top Complaint Aspect"
+      unit: "khía cạnh"
+      description: "Khía cạnh bị phàn nàn nhiều nhất"
+
+
+# ------------------------------------------------------------
+# 8. PHƯƠNG PHÁP ĐỐI CHỨNG (BASELINE & ĐÁNH GIÁ)
+# ------------------------------------------------------------
+baseline: &baseline_config
+  enabled: true
+  method: "heuristic"
+  max_samples: 300
+  sample_size_per_group: 25
+  output_filename: "baseline_review_annotations.csv"
+  hand_labeled_file: "data/samples/hand_labeled_reviews.csv"
+  metric: "accuracy"
+
+
+# ------------------------------------------------------------
+# 9. RANDOM SEED
+# ------------------------------------------------------------
 seed: 42
-figures_dir: figures
-reports_dir: reports
+
+
+# ============================================================
+# CÁC BIẾN TƯƠNG THÍCH NGƯỢC (BACKWARD COMPATIBILITY ALIASES)
+# ============================================================
+city_name: "Sydney"
+processed_dir: "data/processed"
+figures_dir: "figures"
+reports_dir: "reports"
+qa_params: *qa_config
+kpi_params: *kpi_config
+llm_params: *llm_config
+baseline_params: *baseline_config
